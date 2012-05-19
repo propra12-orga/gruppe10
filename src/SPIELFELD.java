@@ -6,7 +6,7 @@ public class SPIELFELD {
 	public static void main(String[] args) {
 		
 		JFrame window = new JFrame(); // Erstellung eines Fensters
-		window.setTitle("BOMBERMAN"); // Fenstertitel
+		window.setTitle("BOMBERMAN 2.0"); // Fenstertitel
 		window.setSize(500, 500); // Fenstergröße
 		window.setVisible(true); // Sichtbarkeit auf true setzen
 		
