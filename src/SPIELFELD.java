@@ -1,7 +1,7 @@
 import java.awt.GridLayout;
 import javax.swing.*;
 
-public class SPIELFELD extends JFrame{
+public class SPIELFELD extends JFrame {
     public static void main(String[] args) {
     	new SPIELFELD();
     }
