@@ -2,16 +2,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
-public class BomberManMove implements KeyListener  {
-	public void main (String[] args) {
+public class BomberManMove implements KeyListener {
+
+		public BomberManMove() {
+			keyPressed(null);
+			keyReleased(null);
+			keyTyped(null);
+		}
 		
-		KeyEvent e = null;
-		
-		keyPressed(e);
-		keyReleased(e);
-		keyTyped(e);
-		
-	}
 	
 	public boolean up, down, left, right;
 	
@@ -50,7 +48,7 @@ public class BomberManMove implements KeyListener  {
 	}
 
 	public void keyTyped(KeyEvent e) {
-		
+	
 	}
 }
 	
