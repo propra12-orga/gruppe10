@@ -14,7 +14,7 @@ public class SPIELFELD extends JFrame {
                 panel.add(label); // einfügen der Bilder in das Gridlayout
             }
                 
-                setContentPane(panel); // hinzufügen des fertigen Girdlayout- + Bilderkonstruktes
+                setContentPane(panel); // hinzufügen des fertigen Gridlayout- + Bilderkonstruktes
                 setTitle("BOMBERMAN"); // Fenstertitel
                 setSize(500, 500); // Fenstergröße
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
