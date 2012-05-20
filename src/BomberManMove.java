@@ -1,24 +1,17 @@
-import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 
 public class BomberManMove implements KeyListener  {
 	public void main (String[] args) {
+		
+		KeyEvent e = null;
+		
+		keyPressed(e);
+		keyReleased(e);
+		keyTyped(e);
+		
+	}
 	
 	public boolean up, down, left, right;
 	
@@ -38,7 +31,6 @@ public class BomberManMove implements KeyListener  {
 			down = true;
 		}
 	}
-
 	
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
@@ -57,16 +49,10 @@ public class BomberManMove implements KeyListener  {
 		}
 	}
 
-	@Override
 	public void keyTyped(KeyEvent e) {
 		
-		
 	}
-
-	}
-	
 }
-
 	
 
 	
