@@ -1,13 +1,13 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JPanel;
 
-public class BomberManMove implements KeyListener {
+
+public class BomberManMove extends JPanel implements KeyListener {
 
 		public BomberManMove() {
-			keyPressed(null);
-			keyReleased(null);
-			keyTyped(null);
+			addKeyListener(this);
 		}
 		
 	
