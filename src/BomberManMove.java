@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 public class BomberManMove extends JPanel implements KeyListener {
 
-		public BomberManMove() {
+		public void bomberManMove() {
 			addKeyListener(this);
 		}
 		
