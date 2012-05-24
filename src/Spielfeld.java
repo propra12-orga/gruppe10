@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Spielfeld extends JFrame implements KeyListener {
     public static void main(String[] args) {
 
-    	new Spielfeld();    	
+    	new Spielfeld();
     }
 	
     
@@ -21,33 +21,50 @@ public class Spielfeld extends JFrame implements KeyListener {
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setVisible(true); // Sichtbarkeit auf true setzen
             
-            addKeyListener(this); // einfügen des KeyListeners
-			requestFocus(); // Fokus anfordern, sonst geht der KeyListener nicht
-           
-            for (int i = 0; i < 121; i++) {
-                JLabel label = new JLabel(new ImageIcon("images/bild2.png"), JLabel.CENTER); // Darstellung der Bilder
-                panel.add(label); // einfuegen der Bilder in das Gridlayout
-            }
+            addKeyListener(this); // einfuegen des KeyListeners
+            
+            ImageIcon feld[][] = new ImageIcon[11][11]; // Deklarieren eines Bilderarrays
+        	JLabel label = new JLabel(); // Darstellung der Bilder
+        	
+            	for (int x=0; x<11; x++) { // zweidimensionale Schleife
+    				for (int y=0; y<11; y++) {
+    					 if (x == 0 || x == 10 || y == 0 || y == 10 || (x%2 == 0 && y%2 == 0)) { // Koordinaten für die Wände
+                             feld[x][y] = new ImageIcon("images/bild2.png"); // Feld an der Stelle x, y bekommt dieses Bild zugewiesen
+                             label = new JLabel(feld[x][y]); // hinzufuegen zum JLabel
+                             panel.add(label); // einfuegen des JLabels
+                             }
+    					 else { // ansonten Rasen
+    						 feld[x][y] = new ImageIcon("images/rasen.png");
+                             label = new JLabel(feld[x][y]);
+                             panel.add(label);
+    					 }
+    				}
+    			
+            	}
         }
         
-        
+        // KeyListener
         public boolean up, down, left, right;
 	    
 	    public void keyPressed(KeyEvent e) {
 			int key = e.getKeyCode();
-			if(key == KeyEvent.VK_LEFT && !right) {
+			if(key == KeyEvent.VK_LEFT) {
 				left = true;
 				System.out.println("links");
-			} else if (key == KeyEvent.VK_RIGHT && !left) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
+			}
+			else if (key == KeyEvent.VK_RIGHT) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
 				right = true;
 				System.out.println("rechts");
-			} else if(key == KeyEvent.VK_UP && !down) {
+			}
+			else if (key == KeyEvent.VK_UP) {
 				up = true;
 				System.out.println("hoch");
-			} else if (key == KeyEvent.VK_DOWN && !up) {
+			}
+			else if (key == KeyEvent.VK_DOWN) {
 				down = true;
 				System.out.println("runter");
-			} else {
+			}
+			else {
 				System.out.println("andere Taste");
 			}
 		}
@@ -56,16 +73,19 @@ public class Spielfeld extends JFrame implements KeyListener {
 			int key = e.getKeyCode();
 			if(key == KeyEvent.VK_LEFT) {
 				left = false;
-			} else if (key == KeyEvent.VK_RIGHT) {
+			}
+			else if (key == KeyEvent.VK_RIGHT) {
 				right = false;
-			} else if(key == KeyEvent.VK_UP) {
+			}
+			else if (key == KeyEvent.VK_UP) {
 				up = false;
-			} else if (key == KeyEvent.VK_DOWN) {
+			}
+			else if (key == KeyEvent.VK_DOWN) {
 				down = false;
 			}
 		}
 
-		public void keyTyped(KeyEvent e) {
+		public void keyTyped(KeyEvent e) { // muss implementiert sein, kann aber leer bleiben, da keine Verwendung besteht
 			
 		}
 }
