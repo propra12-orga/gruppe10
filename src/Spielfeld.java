@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -19,6 +20,7 @@ public class Spielfeld extends JFrame implements KeyListener {
             setTitle("BOMBERMAN"); // Fenstertitel
             setSize(550, 550); // Fenstergroesse
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setResizable(false); // maximieren verbieten, damit das Spiel nicht unschoen aussieht
             setVisible(true); // Sichtbarkeit auf true setzen
             
             addKeyListener(this); // einfuegen des KeyListeners
