@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class Spielfeld extends JFrame implements KeyListener {
     public static void main(String[] args) {
-
+    	
     	new Spielfeld();
     }
 	
@@ -35,7 +35,7 @@ public class Spielfeld extends JFrame implements KeyListener {
                              panel.add(label); // einfuegen des JLabels
                              }
     					 else { // ansonten Rasen
-    						 feld[x][y] = new ImageIcon("images/rasen.png");
+    						 feld[x][y] = new ImageIcon("images/gras.png");
                              label = new JLabel(feld[x][y]);
                              panel.add(label);
     					 }
