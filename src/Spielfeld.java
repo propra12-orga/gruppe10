@@ -10,6 +10,7 @@ public class Spielfeld extends JFrame implements KeyListener {
     	new Spielfeld();
     }
 	
+    Boolean laufen = true;
     int zeile = 1, spalte = 1;
     JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // anlegen vom Gridlayout
     JLabel feld[][] = new JLabel[11][11]; // Darstellung der Bilder
@@ -49,26 +50,26 @@ public class Spielfeld extends JFrame implements KeyListener {
 	    
 	    public void keyPressed(KeyEvent e) {
 			int key = e.getKeyCode();
-			if(key == KeyEvent.VK_LEFT) {
+			if (key == KeyEvent.VK_LEFT && laufen == true) {
 				left = true;
 				System.out.println("links");
 				spalte--;
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanleft.png"));
 				validate();
 			}
-			else if (key == KeyEvent.VK_RIGHT) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
+			else if (key == KeyEvent.VK_RIGHT && laufen == true) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
 				right = true;
 				System.out.println("rechts");
 				spalte++; // spalte wird um 1 erhöht
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanright.png"));
 			}
-			else if (key == KeyEvent.VK_UP) {
+			else if (key == KeyEvent.VK_UP && laufen == true) {
 				up = true;
 				System.out.println("hoch");
 				zeile--; // zeile wird um 1 verringert
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanback.png"));
 			}
-			else if (key == KeyEvent.VK_DOWN) {
+			else if (key == KeyEvent.VK_DOWN && laufen == true) {
 				down = true;
 				System.out.println("runter");
 				zeile++;
