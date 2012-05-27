@@ -53,6 +53,7 @@ public class Spielfeld extends JFrame implements KeyListener {
 			if (key == KeyEvent.VK_LEFT && laufen == true) {
 				left = true;
 				System.out.println("links");
+				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
 				spalte--;
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanleft.png"));
 				validate();
@@ -60,18 +61,21 @@ public class Spielfeld extends JFrame implements KeyListener {
 			else if (key == KeyEvent.VK_RIGHT && laufen == true) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
 				right = true;
 				System.out.println("rechts");
+				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
 				spalte++; // spalte wird um 1 erhöht
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanright.png"));
 			}
 			else if (key == KeyEvent.VK_UP && laufen == true) {
 				up = true;
 				System.out.println("hoch");
+				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
 				zeile--; // zeile wird um 1 verringert
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanback.png"));
 			}
 			else if (key == KeyEvent.VK_DOWN && laufen == true) {
 				down = true;
 				System.out.println("runter");
+				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
 				zeile++;
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwoman.png"));
 			}
