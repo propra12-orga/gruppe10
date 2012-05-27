@@ -19,7 +19,7 @@ public class Spielfeld extends JFrame implements KeyListener {
         	
 
         	setContentPane(panel); // hinzufuegen des fertigen Gridlayout- + Bilderkonstruktes
-            setTitle("BOMBERMAN"); // Fenstertitel
+            setTitle("BOMBERWOMAN"); // Fenstertitel
             setSize(550, 550); // Fenstergroesse
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setResizable(false); // maximieren verbieten, damit das Spiel nicht unschoen aussieht
@@ -53,7 +53,7 @@ public class Spielfeld extends JFrame implements KeyListener {
 			if (key == KeyEvent.VK_LEFT && laufen == true) {
 				left = true;
 				System.out.println("links");
-				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
+				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png")); // Gras an die Stelle, von der Bomberwoman kommt
 				spalte--;
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanleft.png"));
 				validate();
