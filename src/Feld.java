@@ -4,12 +4,11 @@ import javax.swing.JLabel;
 
 public class Feld extends JLabel {
 	
-	public boolean laufen = true;
+	public boolean laufen;
 	
+
+
 	public Feld(ImageIcon imageIcon) {
 		super(imageIcon);
-		
 	}
-
-	
 }
