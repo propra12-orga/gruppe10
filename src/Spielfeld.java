@@ -1,32 +1,34 @@
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.*;
 
+
 public class Spielfeld extends JFrame implements KeyListener {
-    public static void main(String[] args) {
+    
+	public static void main(String[] args) {
     	
     	new Spielfeld();
     }
 	
-    public int x = 0, y = 0;
+	
+    int x = 0, y = 0;
     int zeile = 1, spalte = 1;
     JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // anlegen vom Gridlayout
-    public Feld feld[][] = new Feld[11][11]; // 11 mal 11 JLabel
+    public Feld[][] feld = new Feld[11][11]; // 11 mal 11 JLabel
     
         public Spielfeld() {
         	
             	for (x=0; x<11; x++) { // zweidimensionale Schleife
     				for (y=0; y<11; y++) {
     					 if (x == 0 || x == 10 || y == 0 || y == 10 || (x%2 == 0 && y%2 == 0)) { // Koordinaten für die Wände
-    					//	 feld[x][y].laufen = false;
                              feld[x][y] = new Feld (new ImageIcon("images/bild2.png")); // feld (JLabel) an der Stelle x, y bekommt dieses Bild zugewiesen
+                             feld[x][y].laufen = false;
                              panel.add(feld[x][y]); // einfuegen von JLabel in das JPanel
                              }
     					 else { // ansonten Rasen
-    			//			 feld[x][y].laufen = true;
     						 feld[x][y] = new Feld (new ImageIcon("images/gras.png"));
+    						 feld[x][y].laufen = true;
     						 panel.add(feld[x][y]);
     					 }
     				}
@@ -51,28 +53,28 @@ public class Spielfeld extends JFrame implements KeyListener {
 	    public void keyPressed(KeyEvent e) {
 	    	
 			int key = e.getKeyCode();
-			if ((key == KeyEvent.VK_LEFT)) {
+			if ((key == KeyEvent.VK_LEFT) && (feld[zeile][spalte - 1].laufen)) {
 				left = true;
 				System.out.println("links");
 				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png")); // Gras an die Stelle, von der Bomberwoman kommt
 				spalte--;
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanleft.png"));
 			}
-			else if ((key == KeyEvent.VK_RIGHT)) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
+			else if ((key == KeyEvent.VK_RIGHT) && (feld[zeile][spalte + 1].laufen)) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
 				right = true;
 				System.out.println("rechts");
 				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
 				spalte++; // spalte wird um 1 erhöht
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanright.png"));
 			}
-			else if ((key == KeyEvent.VK_UP)) {
+			else if ((key == KeyEvent.VK_UP) && (feld[zeile - 1][spalte].laufen)) {
 				up = true;
 				System.out.println("hoch");
 				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
 				zeile--; // zeile wird um 1 verringert
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanback.png"));
 			}
-			else if ((key == KeyEvent.VK_DOWN)) {
+			else if ((key == KeyEvent.VK_DOWN) && (feld[zeile + 1][spalte].laufen)) {
 				down = true;
 				System.out.println("runter");
 				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
@@ -80,7 +82,7 @@ public class Spielfeld extends JFrame implements KeyListener {
 				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwoman.png"));
 			}
 			else {
-				System.out.println("andere Taste");
+				System.out.println("Wand oder falsche Taste");
 			}
 		}
 
