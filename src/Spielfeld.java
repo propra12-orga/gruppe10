@@ -1,7 +1,9 @@
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 public class Spielfeld extends JFrame implements KeyListener {
@@ -51,7 +53,7 @@ public class Spielfeld extends JFrame implements KeyListener {
         public void keyPressed(KeyEvent e) {
         	
         	BomberManMove bomberManMove = new BomberManMove();
-        	bomberManMove.endpunkt(e);
+        	bomberManMove.keyboard(e);
         }
 
 		public void keyReleased(KeyEvent e) { // muss implementiert sein, kann aber leer bleiben, da keine Verwendung besteht

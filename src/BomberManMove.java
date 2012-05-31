@@ -1,13 +1,12 @@
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 
-public class BomberManMove extends JPanel {
+public class BomberManMove {
 	
-	public boolean up, down, left, right;
+	boolean up, down, left, right;
 	
-	public void endpunkt(KeyEvent e) {
+	public void keyboard(KeyEvent e) {
 		
 		int key = e.getKeyCode();
 		if ((key == KeyEvent.VK_LEFT) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen)) { // Check, ob das naechste Feld eine Wand ist
