@@ -18,9 +18,9 @@ public class Menu implements ActionListener {
 		options.add(optionsl);
 		options.setSize(50, 30);
 
-		JButton exit = new JButton();
 		exit.add(exitl);
 		exit.setSize(50, 30);
+		exit.addActionListener(this);
 
 		JPanel panel = new JPanel();
 
@@ -31,13 +31,15 @@ public class Menu implements ActionListener {
 
 		frame.setSize(550, 550);
 		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(panel);
+		frame.setVisible(true);
 	}
 
 	JButton start = new JButton();
+	JButton exit = new JButton();
 
-	JFrame frame = new JFrame("Menu");
+	JFrame frame = new JFrame("BOMBERWOMAN | Menu");
 
 	JLabel label = new JLabel("Bomberwoman Version 1.00");
 	JLabel startl = new JLabel("Start");
@@ -47,5 +49,6 @@ public class Menu implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == start) new Spielfeld();
+		if (e.getSource() == exit) frame.dispose();
 	}
 }
