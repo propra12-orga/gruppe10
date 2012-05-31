@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 
-public class BomberManMove {
+public class Move {
 	
 	boolean up, down, left, right;
 	

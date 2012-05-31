@@ -6,13 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class Spielfeld extends JFrame implements KeyListener {
-    
-	public static void main(String[] args) {
-    	
-    	new Spielfeld();
-    }
-	
+public class Spielfeld extends JFrame implements KeyListener {	
 	
     static int zeile = 1, spalte = 1;
     JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // anlegen vom Gridlayout
@@ -52,8 +46,8 @@ public class Spielfeld extends JFrame implements KeyListener {
         
         public void keyPressed(KeyEvent e) {
         	
-        	BomberManMove bomberManMove = new BomberManMove();
-        	bomberManMove.keyboard(e);
+        	Move move = new Move();
+        	move.keyboard(e);
         }
 
 		public void keyReleased(KeyEvent e) { // muss implementiert sein, kann aber leer bleiben, da keine Verwendung besteht
