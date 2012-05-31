@@ -37,6 +37,7 @@ public class Spielfeld extends JFrame implements KeyListener {
             setContentPane(panel); // hinzufuegen des fertigen Gridlayout- + Bilderkonstruktes
             setTitle("BOMBERWOMAN"); // Fenstertitel
             setSize(550, 550); // Fenstergroesse
+            setLocationRelativeTo(null);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setResizable(false); // maximieren verbieten, damit das Spiel nicht unschoen aussieht
             setVisible(true); // Sichtbarkeit auf true setzen

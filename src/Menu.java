@@ -29,8 +29,8 @@ public class Menu implements ActionListener {
 		panel.add(options);
 		panel.add(exit);
 
-		frame.setSize(500, 500);
-		frame.setLocation(500, 100);
+		frame.setSize(550, 550);
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.add(panel);
 	}
