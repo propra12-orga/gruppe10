@@ -12,9 +12,9 @@ public class Spielfeld extends JFrame implements KeyListener {
     }
 	
 	
-    int zeile = 1, spalte = 1;
+    static int zeile = 1, spalte = 1;
     JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // anlegen vom Gridlayout
-    public Feld[][] feld = new Feld[11][11]; // 11 mal 11 JLabel
+    public static Feld[][] feld = new Feld[11][11]; // 11 mal 11 JLabel
     
         public Spielfeld() {
         	
@@ -48,62 +48,11 @@ public class Spielfeld extends JFrame implements KeyListener {
             addKeyListener(this); // einfuegen des KeyListeners
         }
         
-        
-        // KeyListener
-        public boolean up, down, left, right;
-	    
-	    public void keyPressed(KeyEvent e) {
-	    	
-			int key = e.getKeyCode();
-			if ((key == KeyEvent.VK_LEFT) && (feld[zeile][spalte - 1].laufen)) {
-				left = true;
-				System.out.println("links");
-				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png")); // Gras an die Stelle, von der Bomberwoman kommt
-				spalte--;
-				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanleft.png"));
-				
-				if (feld[zeile][spalte].endpunkt) { // Endpunktcheck
-					System.out.println("Endpunkt");
-				}
-			}
-			else if ((key == KeyEvent.VK_RIGHT) && (feld[zeile][spalte + 1].laufen)) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
-				right = true;
-				System.out.println("rechts");
-				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
-				spalte++; // spalte wird um 1 erhöht
-				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanright.png"));
-				
-				if (feld[zeile][spalte].endpunkt) {
-					System.out.println("Endpunkt");
-				}
-			}
-			else if ((key == KeyEvent.VK_UP) && (feld[zeile - 1][spalte].laufen)) {
-				up = true;
-				System.out.println("hoch");
-				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
-				zeile--; // zeile wird um 1 verringert
-				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwomanback.png"));
-				
-				if (feld[zeile][spalte].endpunkt) {
-					System.out.println("Endpunkt");
-				}
-			}
-			else if ((key == KeyEvent.VK_DOWN) && (feld[zeile + 1][spalte].laufen)) {
-				down = true;
-				System.out.println("runter");
-				feld[zeile][spalte].setIcon(new ImageIcon("images/gras.png"));
-				zeile++;
-				feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwoman.png"));
-				
-				if (feld[zeile][spalte].endpunkt) {
-					System.out.println("Endpunkt");
-				}
-			}
-			else {
-				System.out.println("Wand oder falsche Taste");
-			}
-		}
-
+        public void keyPressed(KeyEvent e) {
+        	
+        	BomberManMove bomberManMove = new BomberManMove();
+        	bomberManMove.endpunkt(e);
+        }
 
 		public void keyReleased(KeyEvent e) { // muss implementiert sein, kann aber leer bleiben, da keine Verwendung besteht
 

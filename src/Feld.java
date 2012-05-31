@@ -9,6 +9,7 @@ public class Feld extends JLabel {
 	
 	
 	public Feld(ImageIcon imageIcon) {
+		
 		super(imageIcon);
 	}
 }
