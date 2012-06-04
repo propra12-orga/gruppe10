@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 public class Move {
 	
 	boolean up, down, left, right;
+	private KeyEvent e;
 	
 	public void keyboard(KeyEvent e) {
 		
@@ -59,7 +60,8 @@ public class Move {
 		}
 		
 		else {
-			System.out.println("Wand oder falsche Taste");
+			System.out.println("Wand oder falsche Taste");}
 		}	
+
+	
 	}
-}

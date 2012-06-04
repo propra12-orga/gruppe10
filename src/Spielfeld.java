@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class Spielfeld extends JFrame implements KeyListener {	
 	
-    static int zeile = 1, spalte = 1;
+    static int zeile = 1, spalte = 1, zeile2 = 9, spalte2 = 9;
     JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // anlegen vom Gridlayout
     public static Feld[][] feld = new Feld[11][11]; // 11 mal 11 JLabel
     
@@ -30,9 +30,9 @@ public class Spielfeld extends JFrame implements KeyListener {
             	}
             	
             feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwoman.png")); // Spielfigur
-            
-            feld[9][9].setIcon(new ImageIcon("images/endpunkt.png")); // Endpunkt
-            feld[9][9].endpunkt = true;
+            feld[zeile2][spalte2].setIcon(new ImageIcon("images/Bomberwoman.png"));
+            feld[5][5].setIcon(new ImageIcon("images/endpunkt.png")); // Endpunkt
+            feld[5][5].endpunkt = true;
             
             setContentPane(panel); // hinzufuegen des fertigen Gridlayout- + Bilderkonstruktes
             setTitle("BOMBERWOMAN"); // Fenstertitel
@@ -49,6 +49,8 @@ public class Spielfeld extends JFrame implements KeyListener {
         	
         	Move move = new Move();
         	move.keyboard(e);
+        	Move2 move2 = new Move2();
+        	move2.keyboard(e);
         }
 
 		public void keyReleased(KeyEvent e) { // muss implementiert sein, kann aber leer bleiben, da keine Verwendung besteht
