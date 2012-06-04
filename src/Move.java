@@ -53,6 +53,11 @@ public class Move {
 				System.out.println("Endpunkt");
 			}
 		}
+		else if ((key == 32)) {
+			System.out.println("Bombe");
+			Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/PropraBombe.png"));
+		}
+		
 		else {
 			System.out.println("Wand oder falsche Taste");
 		}	
