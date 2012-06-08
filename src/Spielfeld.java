@@ -17,12 +17,12 @@ public class Spielfeld extends JFrame implements KeyListener {
             	for (int x = 0; x < 11; x++) { // zweidimensionale Schleife
     				for (int y = 0; y < 11; y++) {
     					 if (x == 0 || x == 10 || y == 0 || y == 10 || (x % 2 == 0 && y % 2 == 0)) { // Koordinaten für die Wände
-                             feld[x][y] = new Feld (new ImageIcon("images/bild2.png")); // feld (JLabel) an der Stelle x, y bekommt dieses Bild zugewiesen
+                             feld[x][y] = new Feld (new ImageIcon("images/wand2.png")); // feld (JLabel) an der Stelle x, y bekommt dieses Bild zugewiesen
                              feld[x][y].laufen = false;
                              panel.add(feld[x][y]); // einfuegen von JLabel in das JPanel
                              }
     					 else { // ansonten Rasen
-    						 feld[x][y] = new Feld (new ImageIcon("images/gras.png"));
+    						 feld[x][y] = new Feld (new ImageIcon("images/rasen.png"));
     						 feld[x][y].laufen = true;
     						 panel.add(feld[x][y]);
     					 }
@@ -30,7 +30,7 @@ public class Spielfeld extends JFrame implements KeyListener {
             	}
             	
             feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwoman.png")); // Spielfigur
-            feld[zeile2][spalte2].setIcon(new ImageIcon("images/Bomberwoman.png"));
+            feld[zeile2][spalte2].setIcon(new ImageIcon("images/Bomberwoman2.png"));
             feld[5][5].setIcon(new ImageIcon("images/endpunkt.png")); // Endpunkt
             feld[5][5].endpunkt = true;
             
