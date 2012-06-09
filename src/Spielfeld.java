@@ -6,10 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class Spielfeld extends JFrame implements KeyListener {	
+public class Spielfeld implements KeyListener {	
 	
     static int zeile = 1, spalte = 1, zeile2 = 9, spalte2 = 9;
-    JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // anlegen vom Gridlayout
+    static JFrame frame = new JFrame(); // anlegen vom JFrame
+    static JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // anlegen vom Gridlayout
     public static Feld[][] feld = new Feld[11][11]; // 11 mal 11 JLabel
     
         public Spielfeld() {
@@ -40,15 +41,15 @@ public class Spielfeld extends JFrame implements KeyListener {
             feld[5][5].setIcon(new ImageIcon("images/endpunkt.png")); // Endpunkt
             feld[5][5].endpunkt = true;
             
-            setContentPane(panel); // hinzufuegen des fertigen Gridlayout- + Bilderkonstruktes
-            setTitle("BOMBERWOMAN"); // Fenstertitel
-            setSize(550, 550); // Fenstergroesse
-            setLocationRelativeTo(null);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setResizable(false); // maximieren verbieten, damit das Spiel nicht unschoen aussieht
-            setVisible(true); // Sichtbarkeit auf true setzen
+            frame.add(panel); // hinzufuegen des fertigen Gridlayout- + Bilderkonstruktes
+            frame.setTitle("BOMBERWOMAN"); // Fenstertitel
+            frame.setSize(550, 550); // Fenstergroesse
+            frame.setLocationRelativeTo(null);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setResizable(false); // maximieren verbieten, damit das Spiel nicht unschoen aussieht
+            frame.setVisible(true); // Sichtbarkeit auf true setzen
             
-            addKeyListener(this); // einfuegen des KeyListeners
+            frame.addKeyListener(this); // einfuegen des KeyListeners
         }
         
         public void keyPressed(KeyEvent e) {

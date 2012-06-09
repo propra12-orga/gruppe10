@@ -1,11 +1,16 @@
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 public class Move {
 	
 	boolean up, down, left, right;
-	
+	JLabel winlabel = new JLabel();
+    JPanel winpanel = new JPanel();
+    
+    
 	public void keyboard(KeyEvent e) {
 		
 		int key = e.getKeyCode();
@@ -20,6 +25,12 @@ public class Move {
 			
 			if (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) { // Endpunktcheck
 				System.out.println("Endpunkt");
+				
+				Spielfeld.panel.removeAll();
+		        winlabel.setIcon(new ImageIcon("images/gewonnen1.png"));
+		        winpanel.add(winlabel);
+		        Spielfeld.frame.add(winpanel);
+		        Spielfeld.frame.revalidate();
 			}
 		}
 		else if ((key == KeyEvent.VK_RIGHT) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen)) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
@@ -33,6 +44,12 @@ public class Move {
 			
 			if (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) { // Endpunktcheck
 				System.out.println("Endpunkt");
+				
+				Spielfeld.panel.removeAll();
+		        winlabel.setIcon(new ImageIcon("images/gewonnen1.png"));
+		        winpanel.add(winlabel);
+		        Spielfeld.frame.add(winpanel);
+		        Spielfeld.frame.revalidate();
 			}
 		}
 		else if ((key == KeyEvent.VK_UP) && (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen)) {
@@ -46,6 +63,12 @@ public class Move {
 			
 			if (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) { // Endpunktcheck
 				System.out.println("Endpunkt");
+				
+				Spielfeld.panel.removeAll();
+		        winlabel.setIcon(new ImageIcon("images/gewonnen1.png"));
+		        winpanel.add(winlabel);
+		        Spielfeld.frame.add(winpanel);
+		        Spielfeld.frame.revalidate();      
 			}
 		}
 		else if ((key == KeyEvent.VK_DOWN) && (Spielfeld.feld[Spielfeld.zeile + 1][Spielfeld.spalte].laufen)) {
@@ -59,6 +82,12 @@ public class Move {
 			
 			if (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) { // Endpunktcheck
 				System.out.println("Endpunkt");
+				
+				Spielfeld.panel.removeAll();
+		        winlabel.setIcon(new ImageIcon("images/gewonnen1.png"));
+		        winpanel.add(winlabel);
+		        Spielfeld.frame.add(winpanel);
+		        Spielfeld.frame.revalidate();
 			}
 		}
 		else if ((key == 32)) {
