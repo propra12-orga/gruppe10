@@ -67,7 +67,7 @@ public class Move {
 		}
 		
 		else {
-			System.out.println("Wand oder falsche Taste");}
+			System.out.println("Wand / Spielfigur im Weg oder falsche Taste");}
 		}	
 
 	
