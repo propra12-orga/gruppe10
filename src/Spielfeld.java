@@ -16,11 +16,15 @@ public class Spielfeld extends JFrame implements KeyListener {
         	
             	for (int x = 0; x < 11; x++) { // zweidimensionale Schleife
     				for (int y = 0; y < 11; y++) {
-    					 if (x == 0 || x == 10 || y == 0 || y == 10 || (x % 2 == 0 && y % 2 == 0)) { // Koordinaten für die Wände
+    					 if (x == 0 || x == 10 || y == 0 || y == 10 || (x % 2 == 0 && y % 2 == 0)) { // Koordinaten für die Waende
                              feld[x][y] = new Feld (new ImageIcon("images/wand2.png")); // feld (JLabel) an der Stelle x, y bekommt dieses Bild zugewiesen
-                             feld[x][y].laufen = false;
                              panel.add(feld[x][y]); // einfuegen von JLabel in das JPanel
                              }
+    					 else if ((x == 3 && y == 3) || (x == 3 && y == 7) || (x == 7 && y == 3) || (x == 7 && y == 7)) { // Koordinaten für die zerstoerbaren Waende
+    						 feld[x][y] = new Feld (new ImageIcon("images/wandbreak.png"));
+                             feld[x][y].zerbrechen = true;
+                             panel.add(feld[x][y]);
+    					 }
     					 else { // ansonten Rasen
     						 feld[x][y] = new Feld (new ImageIcon("images/rasen.png"));
     						 feld[x][y].laufen = true;

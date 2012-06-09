@@ -4,8 +4,9 @@ import javax.swing.JLabel;
 
 public class Feld extends JLabel {
 	
-	public boolean laufen;
+	public boolean laufen = false;
 	public boolean endpunkt = false;
+	public boolean zerbrechen = false;
 	
 	
 	public Feld(ImageIcon imageIcon) {
