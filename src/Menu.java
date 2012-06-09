@@ -26,7 +26,7 @@ public class Menu implements ActionListener {
 
 		panel.add(label);
 		panel.add(start);
-		panel.add(options);
+		//panel.add(options);
 		panel.add(exit);
 
 		frame.setSize(550, 550);
