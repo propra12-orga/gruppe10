@@ -17,11 +17,7 @@ public class Move2 {
 		
 		int key = e.getKeyCode();
 		if ((key == KeyEvent.VK_A) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].laufen)) { // Check, ob das naechste Feld eine Wand ist
-			left = true; // setzt die zutreffende Variable auf true und die anderen auf false
-			right = false;
-			up = false;
-			down = false;
-			
+			if (left) {			
 			System.out.println("links");
 			Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].laufen = true; // setzt das bei dem Feld von dem Bomberwoman kommt laufen = true, damit es wieder zu begehen ist
 			Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/rasen.png")); // Gras an die Stelle, von der Bomberwoman kommt
@@ -38,13 +34,17 @@ public class Move2 {
 		        Spielfeld.frame.add(winpanel);
 		        Spielfeld.frame.revalidate();
 			}
+			}
+			else { // Bomberwoman kann sich drehen, damit sie ueberall Bomben legen kann
+				left = true;
+				right = false;
+				up = false;
+				down = false;
+				Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/Bomberwomanleft2.png")); // Bomberwoman dreht sich
+			}
 		}
 		else if ((key == KeyEvent.VK_D) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].laufen)) { // else if, damit das Programm nicht jede if Bedingung einzeln durchgehen muss
-			left = false;
-			right = true;
-			up = false;
-			down = false;
-			
+			if (right) {
 			System.out.println("rechts");
 			Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].laufen = true;
 			Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/rasen.png"));
@@ -61,13 +61,17 @@ public class Move2 {
 		        Spielfeld.frame.add(winpanel);
 		        Spielfeld.frame.revalidate();
 			}
+			}
+			else { // Bomberwoman kann sich drehen, damit sie ueberall Bomben legen kann
+				left = false;
+				right = true;
+				up = false;
+				down = false;
+				Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/Bomberwomanright2.png")); // Bomberwoman dreht sich
+			}
 		}
 		else if ((key == KeyEvent.VK_W) && (Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].laufen)) {
-			left = false;
-			right = false;
-			up = true;
-			down = false;
-			
+			if (up) {
 			System.out.println("hoch");
 			Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].laufen = true;
 			Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/rasen.png"));
@@ -84,13 +88,17 @@ public class Move2 {
 		        Spielfeld.frame.add(winpanel);
 		        Spielfeld.frame.revalidate();
 			}
+			}
+			else { // Bomberwoman kann sich drehen, damit sie ueberall Bomben legen kann
+				left = false;
+				right = false;
+				up = true;
+				down = false;
+				Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/Bomberwomanback2.png")); // Bomberwoman dreht sich
+			}
 		}
 		else if ((key == KeyEvent.VK_S) && (Spielfeld.feld[Spielfeld.zeile2 + 1][Spielfeld.spalte2].laufen)) {
-			left = false;
-			right = false;
-			up = false;
-			down = true;
-			
+			if (down) {
 			System.out.println("runter");
 			Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].laufen = true;
 			Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/rasen.png"));
@@ -106,6 +114,14 @@ public class Move2 {
 		        winpanel.add(winlabel);
 		        Spielfeld.frame.add(winpanel);
 		        Spielfeld.frame.revalidate();
+			}
+			}
+			else { // Bomberwoman kann sich drehen, damit sie ueberall Bomben legen kann
+				left = false;
+				right = false;
+				up = false;
+				down = true;
+				Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/Bomberwoman2.png")); // Bomberwoman dreht sich
 			}
 		}
 		else if (key == KeyEvent.VK_Y) {
