@@ -109,22 +109,22 @@ public class Move2 {
 			}
 		}
 		else if (key == KeyEvent.VK_Y) {
-			if ((up) && (Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].laufen)) { // check ob vor der Bomberwoman Rasen ist
+			if ((up) && (Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].laufen) && (Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].endpunkt == false)) { // check ob vor der Bomberwoman Rasen ist
 				System.out.println("Bombe");
 				Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].setIcon(new ImageIcon("images/PropraBombe.png")); // setze Bombe auf Rasen
 				Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].laufen = false; // dort wo die Bombe liegt wird laufen = false
 			}
-			else if ((down) && (Spielfeld.feld[Spielfeld.zeile2 +1][Spielfeld.spalte2].laufen)) {
+			else if ((down) && (Spielfeld.feld[Spielfeld.zeile2 +1][Spielfeld.spalte2].laufen) && (Spielfeld.feld[Spielfeld.zeile2 + 1][Spielfeld.spalte2].endpunkt == false)) {
 					System.out.println("Bombe");
 					Spielfeld.feld[Spielfeld.zeile2 +1][Spielfeld.spalte2].setIcon(new ImageIcon("images/PropraBombe.png"));
 					Spielfeld.feld[Spielfeld.zeile2 +1][Spielfeld.spalte2].laufen = false;
 			}
-			else if ((left) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].laufen)) {
+			else if ((left) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].laufen) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].endpunkt == false)) {
 						System.out.println("Bombe");
 						Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].setIcon(new ImageIcon("images/PropraBombe.png"));
 						Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].laufen = false;
 			}
-			else if ((right) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].laufen)) {
+			else if ((right) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].laufen) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].endpunkt == false)) {
 							System.out.println("Bombe");
 							Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].setIcon(new ImageIcon("images/PropraBombe.png"));
 							Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].laufen = false;

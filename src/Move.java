@@ -109,22 +109,22 @@ public class Move {
 			}
 		}
 		else if (key == 32) {
-			if ((up) && (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen)) {
+			if ((up) && (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen) && (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].endpunkt == false)) {
 				System.out.println("Bombe");
 				Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].setIcon(new ImageIcon("images/PropraBombe.png"));
 				Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen = false;
 			}
-			else if ((down) && (Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].laufen)) {
+			else if ((down) && (Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].laufen) && (Spielfeld.feld[Spielfeld.zeile + 1][Spielfeld.spalte].endpunkt == false)) {
 					System.out.println("Bombe");
 					Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].setIcon(new ImageIcon("images/PropraBombe.png"));
 					Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].laufen = false;
 			}
-			else if ((left) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen)) {
+			else if ((left) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].endpunkt == false)) {
 						System.out.println("Bombe");
 						Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].setIcon(new ImageIcon("images/PropraBombe.png"));
 						Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen = false;
 			}
-			else if ((right) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen)) {
+			else if ((right) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].endpunkt == false)) {
 							System.out.println("Bombe");
 							Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].setIcon(new ImageIcon("images/PropraBombe.png"));
 							Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen = false;
