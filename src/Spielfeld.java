@@ -29,17 +29,22 @@ public class Spielfeld implements KeyListener {
     					 else { // ansonten Rasen
     						 feld[x][y] = new Feld (new ImageIcon("images/rasen.png"));
     						 feld[x][y].laufen = true;
+    						 feld[x][y].zerbrechen = true;
     						 panel.add(feld[x][y]);
     					 }
     				}
             	}
             	
-            feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwoman.png")); // Spielfigur
-            feld[zeile2][spalte2].setIcon(new ImageIcon("images/Bomberwomanback2.png"));
+            feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwoman.png")); // Spielfigur       
             feld[zeile][spalte].laufen = false; // laufen auf false setzen, damit die Bomberwomen sich nicht umlaufen koennen
+            feld[zeile][spalte].spieler1 = true;
+            feld[zeile2][spalte2].setIcon(new ImageIcon("images/Bomberwomanback2.png"));
             feld[zeile2][spalte2].laufen = false;
+            feld[zeile2][spalte2].spieler2 = true;           
+            
             feld[5][5].setIcon(new ImageIcon("images/endpunkt.png")); // Endpunkt
             feld[5][5].endpunkt = true;
+            feld[5][5].zerbrechen = false;
             
             frame.add(panel); // hinzufuegen des fertigen Gridlayout- + Bilderkonstruktes
             frame.setTitle("BOMBERWOMAN"); // Fenstertitel

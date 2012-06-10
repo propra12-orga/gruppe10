@@ -2,9 +2,11 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import java.util.*;
 
 public class Move {
+	
+	Timer timer = new Timer();
 	
 	private static boolean up, left, right = false;
 	private static boolean down = true;
@@ -21,9 +23,12 @@ public class Move {
 				System.out.println("links");
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].laufen = true; // setzt das bei dem Feld von dem Bomberwoman kommt laufen = true, damit es wieder zu begehen ist
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/rasen.png")); // Gras an die Stelle, von der Bomberwoman kommt
+				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].spieler1 = false;
 				Spielfeld.spalte--;
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/Bomberwomanleft.png"));
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].laufen = false; // damit sich die Bomberwomen nicht treffen
+				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].spieler1 = true;
+				
 				
 				if (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) { // Endpunktcheck
 					System.out.println("Endpunkt");
@@ -49,9 +54,11 @@ public class Move {
 				System.out.println("rechts");
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].laufen = true;
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/rasen.png"));
+				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].spieler1 = false;
 				Spielfeld.spalte++; // spalte wird um 1 erhöht
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/Bomberwomanright.png"));
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].laufen = false;
+				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].spieler1 = true;
 				
 				if (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) { // Endpunktcheck
 					System.out.println("Endpunkt");
@@ -76,9 +83,11 @@ public class Move {
 				System.out.println("hoch");
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].laufen = true;
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/rasen.png"));
+				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].spieler1 = false;
 				Spielfeld.zeile--; // zeile wird um 1 verringert
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/Bomberwomanback.png"));
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].laufen = false;
+				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].spieler1 = true;
 				
 				if (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) { // Endpunktcheck
 					System.out.println("Endpunkt");
@@ -103,6 +112,7 @@ public class Move {
 				System.out.println("runter");
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].laufen = true;
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/rasen.png"));
+				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].spieler1 = false;
 				Spielfeld.zeile++;
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/Bomberwoman.png"));
 				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].laufen = false;
@@ -130,21 +140,25 @@ public class Move {
 				System.out.println("Bombe");
 				Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].setIcon(new ImageIcon("images/PropraBombe.png"));
 				Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen = false;
+				timer.schedule(new BombeTask(3, Spielfeld.zeile - 1, Spielfeld.spalte), 2000);
 			}
 			else if ((down) && (Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].laufen) && (Spielfeld.feld[Spielfeld.zeile + 1][Spielfeld.spalte].endpunkt == false)) {
 					System.out.println("Bombe");
 					Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].setIcon(new ImageIcon("images/PropraBombe.png"));
 					Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].laufen = false;
+					timer.schedule(new BombeTask(3, Spielfeld.zeile + 1, Spielfeld.spalte), 2000);
 			}
 			else if ((left) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].endpunkt == false)) {
 						System.out.println("Bombe");
 						Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].setIcon(new ImageIcon("images/PropraBombe.png"));
 						Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen = false;
+						timer.schedule(new BombeTask(3, Spielfeld.zeile, Spielfeld.spalte - 1), 2000);
 			}
 			else if ((right) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].endpunkt == false)) {
 							System.out.println("Bombe");
 							Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].setIcon(new ImageIcon("images/PropraBombe.png"));
 							Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen = false;
+							timer.schedule(new BombeTask(3, Spielfeld.zeile, Spielfeld.spalte + 1), 2000);
 			}
 		}
 		else {
