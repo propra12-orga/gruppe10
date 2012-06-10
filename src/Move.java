@@ -138,31 +138,32 @@ public class Move {
 		else if (key == 32) {
 			if ((up) && (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen) && (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].endpunkt == false)) {
 				System.out.println("Bombe");
-				Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].setIcon(new ImageIcon("images/PropraBombe.png"));
+				Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].setIcon(new ImageIcon("images/Bombe1.png"));
 				Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen = false;
 				timer.schedule(new BombeTask(3, Spielfeld.zeile - 1, Spielfeld.spalte), 2000);
 			}
 			else if ((down) && (Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].laufen) && (Spielfeld.feld[Spielfeld.zeile + 1][Spielfeld.spalte].endpunkt == false)) {
 					System.out.println("Bombe");
-					Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].setIcon(new ImageIcon("images/PropraBombe.png"));
+					Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].setIcon(new ImageIcon("images/Bombe1.png"));
 					Spielfeld.feld[Spielfeld.zeile +1][Spielfeld.spalte].laufen = false;
 					timer.schedule(new BombeTask(3, Spielfeld.zeile + 1, Spielfeld.spalte), 2000);
 			}
 			else if ((left) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].endpunkt == false)) {
 						System.out.println("Bombe");
-						Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].setIcon(new ImageIcon("images/PropraBombe.png"));
+						Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].setIcon(new ImageIcon("images/Bombe1.png"));
 						Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen = false;
 						timer.schedule(new BombeTask(3, Spielfeld.zeile, Spielfeld.spalte - 1), 2000);
 			}
 			else if ((right) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].endpunkt == false)) {
 							System.out.println("Bombe");
-							Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].setIcon(new ImageIcon("images/PropraBombe.png"));
+							Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].setIcon(new ImageIcon("images/Bombe1.png"));
 							Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen = false;
 							timer.schedule(new BombeTask(3, Spielfeld.zeile, Spielfeld.spalte + 1), 2000);
 			}
 		}
-		else {
-			System.out.println("Wand / Spielfigur im Weg oder falsche Taste");}
+		/*else {
+			System.out.println("Wand / Spielfigur im Weg oder falsche Taste");
+		}*/
 		}	
 
 	
