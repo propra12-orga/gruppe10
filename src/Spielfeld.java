@@ -35,7 +35,7 @@ public class Spielfeld implements KeyListener {
             	}
             	
             feld[zeile][spalte].setIcon(new ImageIcon("images/Bomberwoman.png")); // Spielfigur
-            feld[zeile2][spalte2].setIcon(new ImageIcon("images/Bomberwoman2.png"));
+            feld[zeile2][spalte2].setIcon(new ImageIcon("images/Bomberwomanback2.png"));
             feld[zeile][spalte].laufen = false; // laufen auf false setzen, damit die Bomberwomen sich nicht umlaufen koennen
             feld[zeile2][spalte2].laufen = false;
             feld[5][5].setIcon(new ImageIcon("images/endpunkt.png")); // Endpunkt
