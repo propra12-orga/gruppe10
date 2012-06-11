@@ -41,7 +41,7 @@ public class Menu implements ActionListener {
 
 	JFrame frame = new JFrame("BOMBERWOMAN | Menu");
 
-	JLabel label = new JLabel("Bomberwoman Version 1.00");
+	JLabel label = new JLabel("Bomberwoman Version 0.58b");
 	JLabel startl = new JLabel("Start");
 	JLabel optionsl = new JLabel("Options");
 	JLabel exitl = new JLabel("Exit");
