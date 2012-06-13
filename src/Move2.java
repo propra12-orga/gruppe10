@@ -5,10 +5,10 @@ import java.util.*;
 public class Move2 {
 	Timer timer = new Timer();
 
-	private static boolean up = false;
+	private static boolean up = true;
 	private static boolean left = false;
 	private static boolean right = false;
-	private static boolean down = true;
+	private static boolean down = false;
 
 	public void keyboard(KeyEvent e) {
 		int key = e.getKeyCode();
