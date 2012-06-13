@@ -5,10 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
-
 public class Menu implements ActionListener {
-
 	public Menu() {
 		start.add(startl);
 		start.setSize(50, 30);
@@ -45,10 +42,9 @@ public class Menu implements ActionListener {
 	JLabel startl = new JLabel("Start");
 	JLabel optionsl = new JLabel("Options");
 	JLabel exitl = new JLabel("Exit");
-	
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == start) new Spielfeld();
-		if (e.getSource() == exit) frame.dispose();
+		if(e.getSource() == start) new Spielfeld();
+		if(e.getSource() == exit) frame.dispose();
 	}
 }
