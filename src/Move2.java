@@ -53,7 +53,7 @@ public class Move2 {
 				right = true;
 				up = false;
 				down = false;
-				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/Bomberwomanright2.png"));
+				Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/Bomberwomanright2.png"));
 			}
 		}
 
