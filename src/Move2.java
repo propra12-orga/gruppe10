@@ -87,7 +87,9 @@ public class Move2 {
 				}
 				else Blockeigenschaft.spieler2(Spielfeld.zeile2, Spielfeld.spalte2, "down");
 
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
+				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) {
+					Funktion.gewinner2();
+				}
 			}
 
 			else {
@@ -103,22 +105,22 @@ public class Move2 {
 			if((up) && (Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].laufen)
 					&& (Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].endpunkt == false)) {
 				Blockeigenschaft.bombe2(Spielfeld.zeile2 - 1, Spielfeld.spalte2);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile2 - 1, Spielfeld.spalte2), 2000);
+				timer.schedule(new BombeTask(3, Spielfeld.zeile2 - 1, Spielfeld.spalte2), 2800);
 			}
 			else if((down) && (Spielfeld.feld[Spielfeld.zeile2 + 1][Spielfeld.spalte2].laufen)
 					&& (Spielfeld.feld[Spielfeld.zeile2 + 1][Spielfeld.spalte2].endpunkt == false)) {
 				Blockeigenschaft.bombe2(Spielfeld.zeile2 + 1, Spielfeld.spalte2);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile2 + 1, Spielfeld.spalte2), 2000);
+				timer.schedule(new BombeTask(3, Spielfeld.zeile2 + 1, Spielfeld.spalte2), 2800);
 			}
 			else if((left) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].laufen)
 					&& (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].endpunkt == false)) {
 				Blockeigenschaft.bombe2(Spielfeld.zeile2, Spielfeld.spalte2 - 1);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile2, Spielfeld.spalte2 - 1), 2000);
+				timer.schedule(new BombeTask(3, Spielfeld.zeile2, Spielfeld.spalte2 - 1), 2800);
 			}
 			else if((right) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].laufen)
 					&& (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].endpunkt == false)) {
 				Blockeigenschaft.bombe2(Spielfeld.zeile2, Spielfeld.spalte2 + 1);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile2, Spielfeld.spalte2 + 1), 2000);
+				timer.schedule(new BombeTask(3, Spielfeld.zeile2, Spielfeld.spalte2 + 1), 2800);
 			}
 		}
 	}
