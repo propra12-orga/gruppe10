@@ -11,18 +11,18 @@ public class Move2 {
 	public void keyboard(KeyEvent e) {
 		int key = e.getKeyCode();
 
-		if((key == KeyEvent.VK_A) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].laufen)) {
+		if((key == KeyEvent.VK_A) && (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() - 1].laufen)) {
 			if(left) {
-				Blockeigenschaft.rasen(Spielfeld.zeile2, Spielfeld.spalte2);
-				Spielfeld.spalte2--;
+				Blockeigenschaft.rasen(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
+				Spielfeld.setSpalte2(Spielfeld.getSpalte2() - 1);
 				
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
+				if(Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].endpunkt) Funktion.gewinner2();
 				
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].explosion == true) { 
-					Blockeigenschaft.explosion(Spielfeld.zeile2, Spielfeld.spalte2);
+				if(Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].explosion) { 
+					Blockeigenschaft.explosion(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
 					Funktion.gewinner1();
 				}
-				else Blockeigenschaft.spieler2(Spielfeld.zeile2, Spielfeld.spalte2, "left");
+				else Blockeigenschaft.spieler2(Spielfeld.getZeile2(), Spielfeld.getSpalte2(), "left");
 			}
 
 			else {
@@ -30,22 +30,22 @@ public class Move2 {
 				right = false;
 				up = false;
 				down = false;
-				Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/Bomberwomanleft2.png"));
+				Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].setIcon(new ImageIcon("images/Bomberwomanleft2.png"));
 			}
 		}
 
-		else if((key == KeyEvent.VK_D) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].laufen)) {
+		else if((key == KeyEvent.VK_D) && (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() + 1].laufen)) {
 			if(right) {
-				Blockeigenschaft.rasen(Spielfeld.zeile2, Spielfeld.spalte2);
-				Spielfeld.spalte2++;
+				Blockeigenschaft.rasen(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
+				Spielfeld.setSpalte2(Spielfeld.getSpalte2() + 1);
 				
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
+				if(Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].endpunkt) Funktion.gewinner2();
 				
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].explosion == true) { 
-					Blockeigenschaft.explosion(Spielfeld.zeile2, Spielfeld.spalte2);
+				if(Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].explosion) { 
+					Blockeigenschaft.explosion(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
 					Funktion.gewinner1();
 				}
-				else Blockeigenschaft.spieler2(Spielfeld.zeile2, Spielfeld.spalte2, "right");
+				else Blockeigenschaft.spieler2(Spielfeld.getZeile2(), Spielfeld.getSpalte2(), "right");
 			}
 
 			else {
@@ -53,22 +53,22 @@ public class Move2 {
 				right = true;
 				up = false;
 				down = false;
-				Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/Bomberwomanright2.png"));
+				Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].setIcon(new ImageIcon("images/Bomberwomanright2.png"));
 			}
 		}
 
-		else if((key == KeyEvent.VK_W) && (Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].laufen)) {
+		else if((key == KeyEvent.VK_W) && (Spielfeld.feld[Spielfeld.getZeile2() - 1][Spielfeld.getSpalte2()].laufen)) {
 			if(up) {
-				Blockeigenschaft.rasen(Spielfeld.zeile2, Spielfeld.spalte2);
-				Spielfeld.zeile2--;
+				Blockeigenschaft.rasen(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
+				Spielfeld.setZeile2(Spielfeld.getZeile2() - 1);
 				
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
+				if(Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].endpunkt) Funktion.gewinner2();
 				
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].explosion == true) { 
-					Blockeigenschaft.explosion(Spielfeld.zeile2, Spielfeld.spalte2);
+				if(Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].explosion) { 
+					Blockeigenschaft.explosion(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
 					Funktion.gewinner1();
 				}
-				else Blockeigenschaft.spieler2(Spielfeld.zeile2, Spielfeld.spalte2, "up");
+				else Blockeigenschaft.spieler2(Spielfeld.getZeile2(), Spielfeld.getSpalte2(), "up");
 			}
 
 			else {
@@ -76,22 +76,22 @@ public class Move2 {
 				right = false;
 				up = true;
 				down = false;
-				Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/Bomberwomanback2.png"));
+				Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].setIcon(new ImageIcon("images/Bomberwomanback2.png"));
 			}
 		}
 
-		else if((key == KeyEvent.VK_S) && (Spielfeld.feld[Spielfeld.zeile2 + 1][Spielfeld.spalte2].laufen)) {
+		else if((key == KeyEvent.VK_S) && (Spielfeld.feld[Spielfeld.getZeile2() + 1][Spielfeld.getSpalte2()].laufen)) {
 			if(down) {
-				Blockeigenschaft.rasen(Spielfeld.zeile2, Spielfeld.spalte2);
-				Spielfeld.zeile2++;
+				Blockeigenschaft.rasen(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
+				Spielfeld.setZeile2(Spielfeld.getZeile2() + 1);
 				
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
+				if(Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].endpunkt) Funktion.gewinner2();
 				
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].explosion == true) { 
-					Blockeigenschaft.explosion(Spielfeld.zeile2, Spielfeld.spalte2);
+				if(Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].explosion) { 
+					Blockeigenschaft.explosion(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
 					Funktion.gewinner1();
 				}
-				else Blockeigenschaft.spieler2(Spielfeld.zeile2, Spielfeld.spalte2, "down");
+				else Blockeigenschaft.spieler2(Spielfeld.getZeile2(), Spielfeld.getSpalte2(), "down");
 			}
 
 			else {
@@ -99,30 +99,30 @@ public class Move2 {
 				right = false;
 				up = false;
 				down = true;
-				Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].setIcon(new ImageIcon("images/Bomberwoman2.png"));
+				Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2()].setIcon(new ImageIcon("images/Bomberwoman2.png"));
 			}
 		}
 
 		else if(key == KeyEvent.VK_Y) {
-			if((up) && (Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].laufen)
-					&& (Spielfeld.feld[Spielfeld.zeile2 - 1][Spielfeld.spalte2].endpunkt == false)) {
-				Blockeigenschaft.bombe2(Spielfeld.zeile2 - 1, Spielfeld.spalte2);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile2 - 1, Spielfeld.spalte2), 2800);
+			if((up) && (Spielfeld.feld[Spielfeld.getZeile2() - 1][Spielfeld.getSpalte2()].laufen)
+					&& (Spielfeld.feld[Spielfeld.getZeile2() - 1][Spielfeld.getSpalte2()].endpunkt == false)) {
+				Blockeigenschaft.bombe2(Spielfeld.getZeile2() - 1, Spielfeld.getSpalte2());
+				timer.schedule(new BombeTask(3, Spielfeld.getZeile2() - 1, Spielfeld.getSpalte2()), 2800);
 			}
-			else if((down) && (Spielfeld.feld[Spielfeld.zeile2 + 1][Spielfeld.spalte2].laufen)
-					&& (Spielfeld.feld[Spielfeld.zeile2 + 1][Spielfeld.spalte2].endpunkt == false)) {
-				Blockeigenschaft.bombe2(Spielfeld.zeile2 + 1, Spielfeld.spalte2);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile2 + 1, Spielfeld.spalte2), 2800);
+			else if((down) && (Spielfeld.feld[Spielfeld.getZeile2() + 1][Spielfeld.getSpalte2()].laufen)
+					&& (Spielfeld.feld[Spielfeld.getZeile2() + 1][Spielfeld.getSpalte2()].endpunkt == false)) {
+				Blockeigenschaft.bombe2(Spielfeld.getZeile2() + 1, Spielfeld.getSpalte2());
+				timer.schedule(new BombeTask(3, Spielfeld.getZeile2() + 1, Spielfeld.getSpalte2()), 2800);
 			}
-			else if((left) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].laufen)
-					&& (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 - 1].endpunkt == false)) {
-				Blockeigenschaft.bombe2(Spielfeld.zeile2, Spielfeld.spalte2 - 1);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile2, Spielfeld.spalte2 - 1), 2800);
+			else if((left) && (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() - 1].laufen)
+					&& (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() - 1].endpunkt == false)) {
+				Blockeigenschaft.bombe2(Spielfeld.getZeile2(), Spielfeld.getSpalte2() - 1);
+				timer.schedule(new BombeTask(3, Spielfeld.getZeile2(), Spielfeld.getSpalte2() - 1), 2800);
 			}
-			else if((right) && (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].laufen)
-					&& (Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2 + 1].endpunkt == false)) {
-				Blockeigenschaft.bombe2(Spielfeld.zeile2, Spielfeld.spalte2 + 1);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile2, Spielfeld.spalte2 + 1), 2800);
+			else if((right) && (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() + 1].laufen)
+					&& (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() + 1].endpunkt == false)) {
+				Blockeigenschaft.bombe2(Spielfeld.getZeile2(), Spielfeld.getSpalte2() + 1);
+				timer.schedule(new BombeTask(3, Spielfeld.getZeile2(), Spielfeld.getSpalte2() + 1), 2800);
 			}
 		}
 	}

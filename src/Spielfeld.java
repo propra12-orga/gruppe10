@@ -6,9 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Spielfeld implements KeyListener { // Implementierung vom Keylistener
-	private static int zeile = 1, spalte = 1;
+	private static int zeile = 1, spalte = 1, zeile2 = 9, spalte2 = 9; // deklarieren der Startposition der Bomberwomen
 	
-	public static int getZeile() {
+	public static int getZeile() { // Getters & Setters fuer mehr Flexibilitaet und Sicherheit
 		return zeile;
 	}
 
@@ -24,7 +24,22 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 		Spielfeld.spalte = spalte;
 	}
 
-	static int zeile2 = 9, spalte2 = 9; // deklarieren der Startposition der Bomberwomen
+	public static int getZeile2() {
+		return zeile2;
+	}
+
+	public static void setZeile2(int zeile2) {
+		Spielfeld.zeile2 = zeile2;
+	}
+
+	public static int getSpalte2() {
+		return spalte2;
+	}
+
+	public static void setSpalte2(int spalte2) {
+		Spielfeld.spalte2 = spalte2;
+	}
+
 	static JFrame frame = new JFrame(); // erstellen eines neuen JFrame mit dem Namen "frame"
 	static JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // erstellen eines neuen JPanel mit dem Namen "panel" (besitzt ein 11 mal 11 Gridlayout)
 	public static Feld[][] feld = new Feld[11][11]; // erstellen eines neuen 11 mal 11 Feld Arrays mit dem Namen "feld" (Feld Array = JLabel Array)
