@@ -1,8 +1,7 @@
 import java.util.*;
 
 public class Bombe {
-	boolean gewinner1 = false;
-	boolean gewinner2 = false;
+	boolean gewinner1 = false, gewinner2 = false;
 
 	private int rad, xPos, yPos;
 	boolean zerstoert[] = new boolean[4];

@@ -6,9 +6,7 @@ public class Move2 {
 	Timer timer = new Timer();
 
 	private static boolean up = true;
-	private static boolean left = false;
-	private static boolean right = false;
-	private static boolean down = false;
+	private static boolean left = false, right = false, down = false;
 
 	public void keyboard(KeyEvent e) {
 		int key = e.getKeyCode();

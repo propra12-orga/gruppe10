@@ -5,9 +5,7 @@ import java.util.*;
 public class Move {
 	Timer timer = new Timer();
 
-	private static boolean up = false;
-	private static boolean left = false;
-	private static boolean right = false;
+	private static boolean up = false, left = false, right = false;
 	private static boolean down = true;
 
 	public void keyboard(KeyEvent e) {
@@ -15,7 +13,6 @@ public class Move {
 		
 		if((key == KeyEvent.VK_LEFT) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen)) {
 			if(left) {
-				
 				Blockeigenschaft.rasen(Spielfeld.zeile, Spielfeld.spalte);
 				Spielfeld.spalte--;
 				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion == true) { 
