@@ -20,7 +20,7 @@ public class Blockeigenschaft {
 		Spielfeld.feld[xPos][yPos].zerbrechen = false;
 		Spielfeld.feld[xPos][yPos].spieler1 = false;
 		Spielfeld.feld[xPos][yPos].spieler2 = false;
-		Spielfeld.feld[xPos][yPos].wand = false;
+		Spielfeld.feld[xPos][yPos].wand = true;
 		Spielfeld.feld[xPos][yPos].bombe = false;
 		Spielfeld.feld[xPos][yPos].explosion = false;
 	}
