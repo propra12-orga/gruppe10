@@ -6,7 +6,25 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Spielfeld implements KeyListener { // Implementierung vom Keylistener
-	static int zeile = 1, spalte = 1, zeile2 = 9, spalte2 = 9; // deklarieren der Startposition der Bomberwomen
+	private static int zeile = 1, spalte = 1;
+	
+	public static int getZeile() {
+		return zeile;
+	}
+
+	public static void setZeile(int zeile) {
+		Spielfeld.zeile = zeile;
+	}
+
+	public static int getSpalte() {
+		return spalte;
+	}
+
+	public static void setSpalte(int spalte) {
+		Spielfeld.spalte = spalte;
+	}
+
+	static int zeile2 = 9, spalte2 = 9; // deklarieren der Startposition der Bomberwomen
 	static JFrame frame = new JFrame(); // erstellen eines neuen JFrame mit dem Namen "frame"
 	static JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // erstellen eines neuen JPanel mit dem Namen "panel" (besitzt ein 11 mal 11 Gridlayout)
 	public static Feld[][] feld = new Feld[11][11]; // erstellen eines neuen 11 mal 11 Feld Arrays mit dem Namen "feld" (Feld Array = JLabel Array)
@@ -15,7 +33,7 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 		for(int x = 0; x < 11; x++) { // 2-dimensionale for-Schleife zur Erstellung des Spielfeldes
 			for(int y = 0; y < 11; y++) {
 				if(x == 0 || x == 10 || y == 0 || y == 10 || (x % 2 == 0 && y % 2 == 0)) { // Koordinaten fuer die nicht zerstoerbaren Waende
-					Spielfeld.feld[x][y] = new Feld(new ImageIcon("images/wand2.png")); // setzte eine Wand and die Stelle x, y
+					Spielfeld.feld[x][y] = new Feld(new ImageIcon("images/wand2.png")); // setzte eine Wand an die Stelle x, y
 					Blockeigenschaft.wand(x, y); // weise der Wand diese Eigenschaften zu (siehe Klasse Blockeigenschaften -> wand)
 					panel.add(feld[x][y]); // Füge das fertige JLabel in das JPanel ein (feld -> panel)
 
