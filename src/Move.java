@@ -20,7 +20,7 @@ public class Move {
 				
 				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion) { // Check ob auf dem Feld auf das Bomberwoman geht eine Explosion ist
 					Blockeigenschaft.explosion(Spielfeld.zeile, Spielfeld.spalte); // setze eine Explosion auf das Feld, auf das Bomberwoman geht
-					Funktion.gewinner2(); // fuehre Funktion "gewinner2" aus, da die Spieler1 von der Explosion getroffen wurde
+					Funktion.gewinner2(); // fuehre Funktion "gewinner2" aus, da Spieler1 von der Explosion getroffen wurde
 				}
 				else Blockeigenschaft.spieler1(Spielfeld.zeile, Spielfeld.spalte, "left"); // ansonsten bewege die Bomberwoman nach links
 			}
@@ -103,11 +103,11 @@ public class Move {
 			}
 		}
 		
-		else if(key == 32) {
-			if((up) && (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen)
-					&& (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].endpunkt == false)) {
-				Blockeigenschaft.bombe1(Spielfeld.zeile - 1, Spielfeld.spalte);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile - 1, Spielfeld.spalte), 2800);
+		else if(key == 32) { // Leerzeichen
+			if((up) && (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen) // Check ob sich Bomberwoman nach oben gedreht hat,
+					&& (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].endpunkt == false)) { // das naechste Feld "begehbar" ist und kein Endpunkt ist
+				Blockeigenschaft.bombe1(Spielfeld.zeile - 1, Spielfeld.spalte); // fuege dem Feld die Eigenschaften "bombe1" hinzu
+				timer.schedule(new BombeTask(3, Spielfeld.zeile - 1, Spielfeld.spalte), 2800); // starte den Timer zur Zuendung der Bombe
 			}
 			else if((down) && (Spielfeld.feld[Spielfeld.zeile + 1][Spielfeld.spalte].laufen)
 					&& (Spielfeld.feld[Spielfeld.zeile + 1][Spielfeld.spalte].endpunkt == false)) {
