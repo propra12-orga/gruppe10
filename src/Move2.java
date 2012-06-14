@@ -15,13 +15,14 @@ public class Move2 {
 			if(left) {
 				Blockeigenschaft.rasen(Spielfeld.zeile2, Spielfeld.spalte2);
 				Spielfeld.spalte2--;
+				
+				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
+				
 				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].explosion == true) { 
 					Blockeigenschaft.explosion(Spielfeld.zeile2, Spielfeld.spalte2);
 					Funktion.gewinner1();
 				}
 				else Blockeigenschaft.spieler2(Spielfeld.zeile2, Spielfeld.spalte2, "left");
-
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
 			}
 
 			else {
@@ -37,13 +38,14 @@ public class Move2 {
 			if(right) {
 				Blockeigenschaft.rasen(Spielfeld.zeile2, Spielfeld.spalte2);
 				Spielfeld.spalte2++;
+				
+				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
+				
 				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].explosion == true) { 
 					Blockeigenschaft.explosion(Spielfeld.zeile2, Spielfeld.spalte2);
 					Funktion.gewinner1();
 				}
 				else Blockeigenschaft.spieler2(Spielfeld.zeile2, Spielfeld.spalte2, "right");
-
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
 			}
 
 			else {
@@ -59,13 +61,14 @@ public class Move2 {
 			if(up) {
 				Blockeigenschaft.rasen(Spielfeld.zeile2, Spielfeld.spalte2);
 				Spielfeld.zeile2--;
+				
+				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
+				
 				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].explosion == true) { 
 					Blockeigenschaft.explosion(Spielfeld.zeile2, Spielfeld.spalte2);
 					Funktion.gewinner1();
 				}
 				else Blockeigenschaft.spieler2(Spielfeld.zeile2, Spielfeld.spalte2, "up");
-
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
 			}
 
 			else {
@@ -81,15 +84,14 @@ public class Move2 {
 			if(down) {
 				Blockeigenschaft.rasen(Spielfeld.zeile2, Spielfeld.spalte2);
 				Spielfeld.zeile2++;
+				
+				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) Funktion.gewinner2();
+				
 				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].explosion == true) { 
 					Blockeigenschaft.explosion(Spielfeld.zeile2, Spielfeld.spalte2);
 					Funktion.gewinner1();
 				}
 				else Blockeigenschaft.spieler2(Spielfeld.zeile2, Spielfeld.spalte2, "down");
-
-				if(Spielfeld.feld[Spielfeld.zeile2][Spielfeld.spalte2].endpunkt) {
-					Funktion.gewinner2();
-				}
 			}
 
 			else {

@@ -5,45 +5,47 @@ import java.util.*;
 public class Move {
 	Timer timer = new Timer();
 
-	private static boolean up = false, left = false, right = false;
-	private static boolean down = true;
+	private static boolean up = false, left = false, right = false; // deklarieren von privaten Variablen
+	private static boolean down = true; // setzte down auf true, da die Bomberwoman in dieser Richtung startet
 
 	public void keyboard(KeyEvent e) {
 		int key = e.getKeyCode();
 		
-		if((key == KeyEvent.VK_LEFT) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen)) {
-			if(left) {
-				Blockeigenschaft.rasen(Spielfeld.zeile, Spielfeld.spalte);
-				Spielfeld.spalte--;
-				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion == true) { 
-					Blockeigenschaft.explosion(Spielfeld.zeile, Spielfeld.spalte);
-					Funktion.gewinner2();
+		if((key == KeyEvent.VK_LEFT) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen)) { // Check ob das Feld links von Bomberwoman "begehbar" ist
+			if(left) { // Check ob Bomberwoman sich schon nach links gedreht hat
+				Blockeigenschaft.rasen(Spielfeld.zeile, Spielfeld.spalte); // setze Rasen auf das Feld, von dem Bomberwoman kommt
+				Spielfeld.spalte--; // zaehle Spalte 1 runter
+				
+				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) Funktion.gewinner1(); // Endpunktcheck
+				
+				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion) { // Check ob auf dem Feld auf das Bomberwoman geht eine Explosion ist
+					Blockeigenschaft.explosion(Spielfeld.zeile, Spielfeld.spalte); // setze eine Explosion auf das Feld, auf das Bomberwoman geht
+					Funktion.gewinner2(); // fuehre Funktion "gewinner2" aus, da die Spieler1 von der Explosion getroffen wurde
 				}
-				else Blockeigenschaft.spieler1(Spielfeld.zeile, Spielfeld.spalte, "left");
-
-				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) Funktion.gewinner1();
+				else Blockeigenschaft.spieler1(Spielfeld.zeile, Spielfeld.spalte, "left"); // ansonsten bewege die Bomberwoman nach links
 			}
 
 			else {
-				left = true;
+				left = true; // setzte left auf true
 				right = false;
 				up = false;
 				down = false;
-				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/Bomberwomanleft.png")); // dreht // sich
+				Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].setIcon(new ImageIcon("images/Bomberwomanleft.png")); // Bomberwoman dreht sich nach links
 			}
 		}
 
 		else if((key == KeyEvent.VK_RIGHT) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen)) {
 			if(right) {
 				Blockeigenschaft.rasen(Spielfeld.zeile, Spielfeld.spalte);
-				Spielfeld.spalte++;
-				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion == true) { 
+				Spielfeld.spalte++; // zaehle Spalte 1 hoch
+				
+				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) Funktion.gewinner1();
+				
+				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion) { 
 					Blockeigenschaft.explosion(Spielfeld.zeile, Spielfeld.spalte);
 					Funktion.gewinner2();
 				}
 				else Blockeigenschaft.spieler1(Spielfeld.zeile, Spielfeld.spalte, "right");
-
-				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) Funktion.gewinner1();
 			}
 
 			else {
@@ -59,13 +61,14 @@ public class Move {
 			if(up) {
 				Blockeigenschaft.rasen(Spielfeld.zeile, Spielfeld.spalte);
 				Spielfeld.zeile--;
-				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion == true) { 
+				
+				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) Funktion.gewinner1();
+				
+				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion) { 
 					Blockeigenschaft.explosion(Spielfeld.zeile, Spielfeld.spalte);
 					Funktion.gewinner2();
 				}
 				else Blockeigenschaft.spieler1(Spielfeld.zeile, Spielfeld.spalte, "up");
-
-				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) Funktion.gewinner1();
 			}
 
 			else {
@@ -81,13 +84,14 @@ public class Move {
 			if(down) {
 				Blockeigenschaft.rasen(Spielfeld.zeile, Spielfeld.spalte);
 				Spielfeld.zeile++;
-				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion == true) { 
+				
+				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) Funktion.gewinner1();
+				
+				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].explosion) { 
 					Blockeigenschaft.explosion(Spielfeld.zeile, Spielfeld.spalte);
 					Funktion.gewinner2();
 				}
 				else Blockeigenschaft.spieler1(Spielfeld.zeile, Spielfeld.spalte, "down");
-
-				if(Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte].endpunkt) Funktion.gewinner1();
 			}
 
 			else {
