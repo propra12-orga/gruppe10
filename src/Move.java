@@ -103,22 +103,22 @@ public class Move {
 			if((up) && (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].laufen)
 					&& (Spielfeld.feld[Spielfeld.zeile - 1][Spielfeld.spalte].endpunkt == false)) {
 				Blockeigenschaft.bombe1(Spielfeld.zeile - 1, Spielfeld.spalte);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile - 1, Spielfeld.spalte), 2000);
+				timer.schedule(new BombeTask(3, Spielfeld.zeile - 1, Spielfeld.spalte), 2800);
 			}
 			else if((down) && (Spielfeld.feld[Spielfeld.zeile + 1][Spielfeld.spalte].laufen)
 					&& (Spielfeld.feld[Spielfeld.zeile + 1][Spielfeld.spalte].endpunkt == false)) {
 				Blockeigenschaft.bombe1(Spielfeld.zeile + 1, Spielfeld.spalte);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile + 1, Spielfeld.spalte), 2000);
+				timer.schedule(new BombeTask(3, Spielfeld.zeile + 1, Spielfeld.spalte), 2800);
 			}
 			else if((left) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].laufen)
 					&& (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte - 1].endpunkt == false)) {
 				Blockeigenschaft.bombe1(Spielfeld.zeile, Spielfeld.spalte - 1);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile, Spielfeld.spalte - 1), 2000);
+				timer.schedule(new BombeTask(3, Spielfeld.zeile, Spielfeld.spalte - 1), 2800);
 			}
 			else if((right) && (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].laufen)
 					&& (Spielfeld.feld[Spielfeld.zeile][Spielfeld.spalte + 1].endpunkt == false)) {
 				Blockeigenschaft.bombe1(Spielfeld.zeile, Spielfeld.spalte + 1);
-				timer.schedule(new BombeTask(3, Spielfeld.zeile, Spielfeld.spalte + 1), 2000);
+				timer.schedule(new BombeTask(3, Spielfeld.zeile, Spielfeld.spalte + 1), 2800);
 			}
 		}
 	}
