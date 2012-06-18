@@ -1,6 +1,11 @@
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -44,11 +49,11 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 	static JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // erstellen eines neuen JPanel mit dem Namen "panel" (besitzt ein 11 mal 11 Gridlayout)
 	public static Feld[][] feld = new Feld[11][11]; // erstellen eines neuen 11 mal 11 Feld Arrays mit dem Namen "feld" (Feld Array = JLabel Array)
 	
-	public Spielfeld() {
-		for(int x = 0; x < 11; x++) { // 2-dimensionale for-Schleife zur Erstellung des Spielfeldes
+	public Spielfeld(int anzahlSpieler) {
+		/* for(int x = 0; x < 11; x++) { // 2-dimensionale for-Schleife zur Erstellung des Spielfeldes
 			for(int y = 0; y < 11; y++) {
 				if(x == 0 || x == 10 || y == 0 || y == 10 || (x % 2 == 0 && y % 2 == 0)) { // Koordinaten fuer die nicht zerstoerbaren Waende
-					Spielfeld.feld[x][y] = new Feld(new ImageIcon("images/wand2.png")); // setzte eine Wand an die Stelle x, y
+					feld[x][y] = new Feld(new ImageIcon("images/wand2.png")); // setzte eine Wand an die Stelle x, y
 					Blockeigenschaft.wand(x, y); // weise der Wand diese Eigenschaften zu (siehe Klasse Blockeigenschaften -> wand)
 					panel.add(feld[x][y]); // Füge das fertige JLabel in das JPanel ein (feld -> panel)
 
@@ -69,9 +74,75 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 					panel.add(feld[x][y]);
 				}
 			}
+		} */ // alter Code zum zeichen des Spielfeldes
+		
+		String struktur = ""; // neuer Code zum einlesen der Datei "feld.txt"
+	    FileReader fr = null;
+		try {
+			fr = new FileReader("feld.txt");
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
-		Blockeigenschaft.spieler1(zeile, spalte, "down"); // Startposition von Spieler 1 & zuweisen von Eigenschaften
-		Blockeigenschaft.spieler2(zeile2, spalte2, "up"); // Startposition von Spieler 2 & zuweisen von Eigenschaften
+		
+	   BufferedReader br = new BufferedReader(fr);
+	   String zeileInDatei[] = new String[11];
+	   for(int i=0; i<=10; i++){
+		   try {
+			   zeileInDatei[i] = br.readLine();
+			   struktur = struktur + zeileInDatei[i];
+		   }
+	  	 	catch (IOException e) {
+	  	 		e.printStackTrace();
+	  	 	}
+	   }
+	   try {
+		   fr.close();
+	   }
+	   catch (IOException e) {
+		   e.printStackTrace();
+	   }
+
+	   char[] c = struktur.toCharArray();
+
+	   int x = 0, y = -1;
+	   for(int i=0; i<=120; i++) {
+	   	y++;
+	   	if(y == 11){
+	   		x++;
+	   		y = 0;
+	   	}
+
+	   	switch(c[i]) {
+	   		case '0':
+	   			feld[x][y] = new Feld(new ImageIcon("images/wand2.png")); // setzte eine Wand an die Stelle x, y
+	   			Blockeigenschaft.wand(x, y); // weise der Wand diese Eigenschaften zu (siehe Klasse Blockeigenschaften -> wand)
+	   			panel.add(feld[x][y]);            
+	   			break;
+	   		case '1':
+	   			feld[x][y] = new Feld(new ImageIcon("images/wandbreak.png"));
+	   			Blockeigenschaft.broecklig(x, y);
+	   			panel.add(feld[x][y]);             
+	   			break;
+	   		case '2':
+	   			feld[x][y] = new Feld(new ImageIcon("images/rasen.png"));
+	   			Blockeigenschaft.rasen(x, y);
+	   			panel.add(feld[x][y]);             
+	   			break;
+	   		}
+	   }
+		
+	   if (anzahlSpieler == 1) {
+		   Blockeigenschaft.spieler1(zeile, spalte, "down"); // Startposition von Spieler 1 & zuweisen von Eigenschaften
+	   }
+	   else if (anzahlSpieler == 2) {
+		   Blockeigenschaft.spieler1(zeile, spalte, "down"); // Startposition von Spieler 1 & zuweisen von Eigenschaften
+		   Blockeigenschaft.spieler2(zeile2, spalte2, "up"); // Startposition von Spieler 2 & zuweisen von Eigenschaften
+	   }
+		else if (anzahlSpieler < 1 || anzahlSpieler > 2) {
+			System.out.println("Falsche Anzahl an Spieler");
+		}
+		
 		Blockeigenschaft.endpunkt(5, 5); // setzte den Endpunkt in die Mitte (5, 5)
 
 		frame.add(panel); // fuege das JPanel in das JFrame (panel -> frame)

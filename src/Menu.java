@@ -7,9 +7,13 @@ import javax.swing.JPanel;
 
 public class Menu implements ActionListener {
 	public Menu() {
-		start.add(startl);
-		start.setSize(50, 30);
-		start.addActionListener(this);
+		start1.add(startl1);
+		start1.setSize(50, 30);
+		start1.addActionListener(this);
+		
+		start2.add(startl2);
+		start2.setSize(50, 30);
+		start2.addActionListener(this);
 
 		JButton options = new JButton();
 		options.add(optionsl);
@@ -22,8 +26,8 @@ public class Menu implements ActionListener {
 		JPanel panel = new JPanel();
 
 		panel.add(label);
-		panel.add(start);
-		//panel.add(options);
+		panel.add(start1);
+		panel.add(start2);
 		panel.add(exit);
 
 		frame.setSize(550, 550);
@@ -33,18 +37,21 @@ public class Menu implements ActionListener {
 		frame.setVisible(true);
 	}
 
-	JButton start = new JButton();
+	JButton start1 = new JButton();
+	JButton start2 = new JButton();
 	JButton exit = new JButton();
 
 	JFrame frame = new JFrame("BOMBERWOMAN | Menu");
 
-	JLabel label = new JLabel("Bomberwoman Version 0.58b");
-	JLabel startl = new JLabel("Start");
+	JLabel label = new JLabel("Bomberwoman Version 0.60");
+	JLabel startl1 = new JLabel("1 Spieler");
+	JLabel startl2 = new JLabel("2 Spieler");
 	JLabel optionsl = new JLabel("Options");
 	JLabel exitl = new JLabel("Exit");
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == start) new Spielfeld();
+		if(e.getSource() == start1) new Spielfeld(1);
+		if(e.getSource() == start2) new Spielfeld(2);
 		if(e.getSource() == exit) frame.dispose();
 	}
 }
