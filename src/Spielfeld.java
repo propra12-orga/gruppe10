@@ -89,8 +89,8 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 	   String zeileInDatei[] = new String[11];
 	   for(int i=0; i<=10; i++){
 		   try {
-			   zeileInDatei[i] = br.readLine();
-			   struktur = struktur + zeileInDatei[i];
+			   zeileInDatei[i] = br.readLine(); // lese Zeile an der Stelle i
+			   struktur = struktur + zeileInDatei[i]; // hinzufuegen das Gelesenen zum String "struktur"
 		   }
 	  	 	catch (IOException e) {
 	  	 		e.printStackTrace();

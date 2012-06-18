@@ -15,10 +15,6 @@ public class Menu implements ActionListener {
 		start2.setSize(50, 30);
 		start2.addActionListener(this);
 
-		JButton options = new JButton();
-		options.add(optionsl);
-		options.setSize(50, 30);
-
 		exit.add(exitl);
 		exit.setSize(50, 30);
 		exit.addActionListener(this);
