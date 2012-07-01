@@ -49,7 +49,7 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 	static JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // erstellen eines neuen JPanel mit dem Namen "panel" (besitzt ein 11 mal 11 Gridlayout)
 	public static Feld[][] feld = new Feld[11][11]; // erstellen eines neuen 11 mal 11 Feld Arrays mit dem Namen "feld" (Feld Array = JLabel Array)
 	
-	public Spielfeld(int anzahlSpieler) {
+	public Spielfeld(int anzahlSpieler, String level) {
 		/* for(int x = 0; x < 11; x++) { // 2-dimensionale for-Schleife zur Erstellung des Spielfeldes
 			for(int y = 0; y < 11; y++) {
 				if(x == 0 || x == 10 || y == 0 || y == 10 || (x % 2 == 0 && y % 2 == 0)) { // Koordinaten fuer die nicht zerstoerbaren Waende
@@ -79,7 +79,7 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 		String struktur = ""; // neuer Code zum einlesen der Datei "feld.txt"
 	    FileReader fr = null;
 		try {
-			fr = new FileReader("feld.txt");
+			fr = new FileReader(level);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -129,6 +129,11 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 	   			Blockeigenschaft.rasen(x, y);
 	   			panel.add(feld[x][y]);             
 	   			break;
+	   		case '5':
+	   			feld[x][y] = new Feld(new ImageIcon("images/endpunkt.png"));
+	   			Blockeigenschaft.endpunkt(x, y); // setzte den Endpunkt in die Mitte (5, 5)
+	   			panel.add(feld[x][y]);
+	   			break;
 	   		}
 	   }
 		
@@ -142,8 +147,6 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 		else if (anzahlSpieler < 1 || anzahlSpieler > 2) {
 			System.out.println("Falsche Anzahl an Spieler");
 		}
-		
-		Blockeigenschaft.endpunkt(5, 5); // setzte den Endpunkt in die Mitte (5, 5)
 
 		frame.add(panel); // fuege das JPanel in das JFrame (panel -> frame)
 		frame.setTitle("BOMBERWOMAN"); // setzte Fenstertitel
