@@ -1,21 +1,38 @@
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import java.util.*;
+import java.applet.*;
 
-public class Move {
+public class Move extends Applet {
 	Timer timer = new Timer(); // erzeuge einen neues Timer Objekt mit dem Namen "timer"
 
+	AudioClip sound1;
+	
 	private static boolean up = false, left = false, right = false; // deklarieren von privaten Variablen
 	private static boolean down = true; // setzte down auf true, da die Bomberwoman in dieser Richtung startet
 	private static boolean win = false;
 
+
+  
+
 	public void keyboard(KeyEvent e) {
 		int key = e.getKeyCode();
 		
+		/* try
+	     {
+	          sound1=getAudioClip(getCodeBase(),"sound");
+	      
+	     }
+	     catch (Exception ex){}
+		*/
+		
 		if((key == KeyEvent.VK_LEFT) && (Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte() - 1].laufen)) { // Check ob das Feld links von Bomberwoman "begehbar" ist
 			if(left) { // Check ob Bomberwoman sich schon nach links gedreht hat
+                // sound1.play();
 				Blockeigenschaft.rasen(Spielfeld.getZeile(), Spielfeld.getSpalte()); // setze Rasen auf das Feld, von dem Bomberwoman kommt
 				Spielfeld.setSpalte(Spielfeld.getSpalte() - 1); // zaehle Spalte 1 runter
+				
+				
 				
 				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].endpunkt) {
 					win = true;

@@ -49,7 +49,7 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 		Spielfeld.spalte2 = spalte2;
 	}
 	
-	public void netzwerkEinrichten() {
+	/*public void netzwerkEinrichten() {
 		try {
 			ServerSocket serverSock = new ServerSocket(4242);
 			
@@ -73,7 +73,7 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 		} catch(IOException ex) {
 			ex.printStackTrace();
 		}
-	}
+	}*/
 
 	static JFrame frame = new JFrame(); // erstellen eines neuen JFrame mit dem Namen "frame"
 	static JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // erstellen eines neuen JPanel mit dem Namen "panel" (besitzt ein 11 mal 11 Gridlayout)
@@ -160,7 +160,7 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 	   			panel.add(feld[x][y]);             
 	   			break;
 	   		case '5':
-	   			feld[x][y] = new Feld(new ImageIcon("images/endpunkt.png"));
+	   			feld[x][y] = new Feld(new ImageIcon("images/endpunpkt.png"));
 	   			Blockeigenschaft.endpunkt(x, y); // setzte den Endpunkt in die Mitte (5, 5)
 	   			panel.add(feld[x][y]);
 	   			break;
@@ -177,8 +177,8 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 		else if (anzahlSpieler < 1 || anzahlSpieler > 2) {
 			System.out.println("Falsche Anzahl an Spieler");
 		}
-	   
-	   	netzwerkEinrichten();
+	
+	   //	netzwerkEinrichten();
 	   
 		frame.add(panel); // fuege das JPanel in das JFrame (panel -> frame)
 		frame.setTitle("BOMBERWOMAN"); // setzte Fenstertitel

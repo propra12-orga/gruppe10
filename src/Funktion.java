@@ -24,11 +24,9 @@ public class Funktion {
 
 	public static void draw() {
 		Spielfeld.panel.removeAll();
-		// winlabel.setIcon(new ImageIcon("images/gewonnen1.png"));
+		winlabel.setIcon(new ImageIcon("images/Gleichstand.png"));
 		winpanel.add(Funktion.winlabel);
 		Spielfeld.frame.add(Funktion.winpanel);
 		Spielfeld.frame.revalidate();
-
-		System.out.println("Draw");
 	}
 }

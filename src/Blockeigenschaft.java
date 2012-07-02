@@ -14,7 +14,7 @@ public class Blockeigenschaft {
 	}
 	
 	public static void endpunkt(int xPos, int yPos) {
-		Spielfeld.feld[xPos][yPos].setIcon(new ImageIcon("images/endpunkt.png"));
+		Spielfeld.feld[xPos][yPos].setIcon(new ImageIcon("images/endpunpkt.png"));
 		Spielfeld.feld[xPos][yPos].laufen = true;
 		Spielfeld.feld[xPos][yPos].endpunkt = true;
 		Spielfeld.feld[xPos][yPos].zerbrechen = false;
