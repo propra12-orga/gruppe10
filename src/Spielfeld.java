@@ -49,7 +49,7 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 	static JPanel panel = new JPanel(new GridLayout(11, 11, 0, 0)); // erstellen eines neuen JPanel mit dem Namen "panel" (besitzt ein 11 mal 11 Gridlayout)
 	public static Feld[][] feld = new Feld[11][11]; // erstellen eines neuen 11 mal 11 Feld Arrays mit dem Namen "feld" (Feld Array = JLabel Array)
 	
-	public Spielfeld(int anzahlSpieler, String level) {
+	public void neuesSpielfeld(int anzahlSpieler, String level) {
 		/* for(int x = 0; x < 11; x++) { // 2-dimensionale for-Schleife zur Erstellung des Spielfeldes
 			for(int y = 0; y < 11; y++) {
 				if(x == 0 || x == 10 || y == 0 || y == 10 || (x % 2 == 0 && y % 2 == 0)) { // Koordinaten fuer die nicht zerstoerbaren Waende
@@ -156,6 +156,7 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 		frame.setResizable(false); // ausschalten vom maximieren des Fensters
 		frame.setVisible(true); // zeige das Fenster an
 		frame.addKeyListener(this); // fuege den Keylistener in das JFrame ein
+		frame.revalidate();
 	}
 
 	public void keyPressed(KeyEvent e) { // wenn eine Taste gedrueckt wird
@@ -168,4 +169,5 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 	public void keyReleased(KeyEvent e) {}
 
 	public void keyTyped(KeyEvent e) {}
+
 }

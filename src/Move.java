@@ -7,6 +7,7 @@ public class Move {
 
 	private static boolean up = false, left = false, right = false; // deklarieren von privaten Variablen
 	private static boolean down = true; // setzte down auf true, da die Bomberwoman in dieser Richtung startet
+	private static boolean win = false;
 
 	public void keyboard(KeyEvent e) {
 		int key = e.getKeyCode();
@@ -16,9 +17,13 @@ public class Move {
 				Blockeigenschaft.rasen(Spielfeld.getZeile(), Spielfeld.getSpalte()); // setze Rasen auf das Feld, von dem Bomberwoman kommt
 				Spielfeld.setSpalte(Spielfeld.getSpalte() - 1); // zaehle Spalte 1 runter
 				
-				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].endpunkt) Funktion.gewinner1(); // Endpunktcheck
+				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].endpunkt) {
+					win = true;
+					Funktion.gewinner1(); // Endpunktcheck
+				}
 				
 				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].explosion) { // Check ob auf dem Feld auf das Bomberwoman geht eine Explosion ist
+					win = true;
 					Blockeigenschaft.explosion(Spielfeld.getZeile(), Spielfeld.getSpalte()); // setze eine Explosion auf das Feld, auf das Bomberwoman geht
 					Funktion.gewinner2(); // fuehre Funktion "gewinner2" aus, da Spieler1 von der Explosion getroffen wurde
 				}
@@ -33,20 +38,23 @@ public class Move {
 				Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].setIcon(new ImageIcon("images/Bomberwomanleft.png")); // Bomberwoman dreht sich nach links
 			}
 		}
-
+		
 		else if((key == KeyEvent.VK_RIGHT) && (Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte() + 1].laufen)) {
 			if(right) {
 				Blockeigenschaft.rasen(Spielfeld.getZeile(), Spielfeld.getSpalte());
 				Spielfeld.setSpalte(Spielfeld.getSpalte() + 1); // zaehle Spalte 1 hoch
-				
-				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].endpunkt) Funktion.gewinner1();
-				
-				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].explosion) { 
+				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].endpunkt) {
+					win = true;
+					Funktion.gewinner1();
+				}
+				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].explosion) {
+					win = true;
 					Blockeigenschaft.explosion(Spielfeld.getZeile(), Spielfeld.getSpalte());
 					Funktion.gewinner2();
 				}
 				else Blockeigenschaft.spieler1(Spielfeld.getZeile(), Spielfeld.getSpalte(), "right");
 			}
+			
 
 			else {
 				left = false;
@@ -62,9 +70,13 @@ public class Move {
 				Blockeigenschaft.rasen(Spielfeld.getZeile(), Spielfeld.getSpalte());
 				Spielfeld.setZeile(Spielfeld.getZeile() - 1);
 				
-				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].endpunkt) Funktion.gewinner1();
+				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].endpunkt) {
+					win = true;
+					Funktion.gewinner1();
+				}
 				
-				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].explosion) { 
+				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].explosion) {
+					win = true;
 					Blockeigenschaft.explosion(Spielfeld.getZeile(), Spielfeld.getSpalte());
 					Funktion.gewinner2();
 				}
@@ -85,9 +97,13 @@ public class Move {
 				Blockeigenschaft.rasen(Spielfeld.getZeile(), Spielfeld.getSpalte());
 				Spielfeld.setZeile(Spielfeld.getZeile() + 1);
 				
-				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].endpunkt) Funktion.gewinner1();
+				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].endpunkt) {
+					win = true;
+					Funktion.gewinner1();
+				}
 				
-				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].explosion) { 
+				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].explosion) {
+					win = true;
 					Blockeigenschaft.explosion(Spielfeld.getZeile(), Spielfeld.getSpalte());
 					Funktion.gewinner2();
 				}
@@ -124,6 +140,33 @@ public class Move {
 				Blockeigenschaft.bombe1(Spielfeld.getZeile(), Spielfeld.getSpalte() + 1);
 				timer.schedule(new BombeTask(3, Spielfeld.getZeile(), Spielfeld.getSpalte() + 1), 2800);
 			}
+		}
+		if((key == KeyEvent.VK_N) && (win)) { // druecke N fuer Neustart beim Gewinnerbildschirm
+			Spielfeld.setZeile(1);
+			Spielfeld.setSpalte(1);
+			Spielfeld.setZeile2(9);
+			Spielfeld.setSpalte2(9);
+			if (Menu.anzahlSpieler == 1) {
+				Spielfeld.panel.removeAll();
+				Spielfeld spielfeld = new Spielfeld();
+	        	spielfeld.neuesSpielfeld(1, "level1.txt");
+			}
+			else {
+				if (Menu.level1) {
+					Spielfeld.panel.removeAll();
+					Spielfeld spielfeld = new Spielfeld();
+		        	spielfeld.neuesSpielfeld(2, "level1.txt");
+				}
+				else {
+					Spielfeld.panel.removeAll();
+					Spielfeld spielfeld = new Spielfeld();
+		        	spielfeld.neuesSpielfeld(2, "freerun.txt");
+				}
+			}
+		}
+		else if ((key == KeyEvent.VK_E) && (win)) { // druecke E fuer Exit
+			Spielfeld.panel.removeAll();
+			Spielfeld.frame.dispose();
 		}
 	}
 }
