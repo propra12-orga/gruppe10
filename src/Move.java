@@ -22,7 +22,7 @@ public class Move {
 					Funktion.gewinner1(); // Endpunktcheck
 				}
 				
-				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].explosion) { // Check ob auf dem Feld auf das Bomberwoman geht eine Explosion ist
+				if(Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte()].explosion) { // Check ob auf dem Feld, auf das Bomberwoman geht, eine Explosion ist
 					win = true;
 					Blockeigenschaft.explosion(Spielfeld.getZeile(), Spielfeld.getSpalte()); // setze eine Explosion auf das Feld, auf das Bomberwoman geht
 					Funktion.gewinner2(); // fuehre Funktion "gewinner2" aus, da Spieler1 von der Explosion getroffen wurde

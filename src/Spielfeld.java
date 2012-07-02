@@ -5,6 +5,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -43,6 +47,32 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 
 	public static void setSpalte2(int spalte2) {
 		Spielfeld.spalte2 = spalte2;
+	}
+	
+	public void netzwerkEinrichten() {
+		try {
+			ServerSocket serverSock = new ServerSocket(4242);
+			
+			while (true) {
+				Socket sock = serverSock.accept();
+				PrintWriter writer = new PrintWriter(sock.getOutputStream());
+				writer.close();
+			}
+		} catch(IOException ex) {
+			ex.printStackTrace();
+		}
+		
+		try {
+			Socket sock2 = new Socket("127.0.0.1", 4242);
+			
+			InputStreamReader streamReader = new InputStreamReader(sock2.getInputStream());
+			BufferedReader reader = new BufferedReader(streamReader);
+			
+			System.out.println("Netzwerkverbindung steht");
+			
+		} catch(IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	static JFrame frame = new JFrame(); // erstellen eines neuen JFrame mit dem Namen "frame"
@@ -147,7 +177,9 @@ public class Spielfeld implements KeyListener { // Implementierung vom Keylisten
 		else if (anzahlSpieler < 1 || anzahlSpieler > 2) {
 			System.out.println("Falsche Anzahl an Spieler");
 		}
-
+	   
+	   	netzwerkEinrichten();
+	   
 		frame.add(panel); // fuege das JPanel in das JFrame (panel -> frame)
 		frame.setTitle("BOMBERWOMAN"); // setzte Fenstertitel
 		frame.setSize(550, 550); // setzte Fenstergroesse

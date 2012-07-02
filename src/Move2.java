@@ -165,7 +165,7 @@ public class Move2 {
 				}
 			}
 		}
-		else if ((key == KeyEvent.VK_E) && (win)) { // druecke E fuer Exit
+		else if ((key == KeyEvent.VK_E) && (win)) {
 			Spielfeld.panel.removeAll();
 			Spielfeld.frame.dispose();
 		}
