@@ -4,7 +4,9 @@ import java.util.*;
 import java.applet.*;
 
 public class Move extends Applet {
-	Timer timer = new Timer(); // erzeuge einen neues Timer Objekt mit dem Namen "timer"
+	public static KeyEvent e;
+	public static int key;
+	static Timer timer = new Timer(); // erzeuge einen neues Timer Objekt mit dem Namen "timer"
 
 	AudioClip sound1;
 	
@@ -16,7 +18,16 @@ public class Move extends Applet {
   
 
 	public void keyboard(KeyEvent e) {
-		int key = e.getKeyCode();
+		
+		if(!Spielfeld.netz) {
+			key = e.getKeyCode();
+		}
+		if (Spielfeld.netz && Menu.anzahlSpieler == 1){
+			key = e.getKeyCode();
+		}
+		if (Spielfeld.netz && Menu.anzahlSpieler == 2){
+			key = Spielfeld.anweisung;
+		}
 		
 		/* try
 	     {
@@ -26,7 +37,7 @@ public class Move extends Applet {
 	     catch (Exception ex){}
 		*/
 		
-		if((key == KeyEvent.VK_LEFT) && (Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte() - 1].laufen)) { // Check ob das Feld links von Bomberwoman "begehbar" ist
+		if((key == 37) && (Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte() - 1].laufen)) { // Check ob das Feld links von Bomberwoman "begehbar" ist
 			if(left) { // Check ob Bomberwoman sich schon nach links gedreht hat
                 // sound1.play();
 				Blockeigenschaft.rasen(Spielfeld.getZeile(), Spielfeld.getSpalte()); // setze Rasen auf das Feld, von dem Bomberwoman kommt
@@ -56,7 +67,7 @@ public class Move extends Applet {
 			}
 		}
 		
-		else if((key == KeyEvent.VK_RIGHT) && (Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte() + 1].laufen)) {
+		else if((key == 39) && (Spielfeld.feld[Spielfeld.getZeile()][Spielfeld.getSpalte() + 1].laufen)) {
 			if(right) {
 				Blockeigenschaft.rasen(Spielfeld.getZeile(), Spielfeld.getSpalte());
 				Spielfeld.setSpalte(Spielfeld.getSpalte() + 1); // zaehle Spalte 1 hoch
@@ -82,7 +93,7 @@ public class Move extends Applet {
 			}
 		}
 
-		else if((key == KeyEvent.VK_UP) && (Spielfeld.feld[Spielfeld.getZeile() - 1][Spielfeld.getSpalte()].laufen)) {
+		else if((key == 38) && (Spielfeld.feld[Spielfeld.getZeile() - 1][Spielfeld.getSpalte()].laufen)) {
 			if(up) {
 				Blockeigenschaft.rasen(Spielfeld.getZeile(), Spielfeld.getSpalte());
 				Spielfeld.setZeile(Spielfeld.getZeile() - 1);
@@ -109,7 +120,7 @@ public class Move extends Applet {
 			}
 		}
 		
-		else if((key == KeyEvent.VK_DOWN) && (Spielfeld.feld[Spielfeld.getZeile() + 1][Spielfeld.getSpalte()].laufen)) {
+		else if((key == 40) && (Spielfeld.feld[Spielfeld.getZeile() + 1][Spielfeld.getSpalte()].laufen)) {
 			if(down) {
 				Blockeigenschaft.rasen(Spielfeld.getZeile(), Spielfeld.getSpalte());
 				Spielfeld.setZeile(Spielfeld.getZeile() + 1);

@@ -25,8 +25,8 @@ public class Funktion {
 	public static void draw() {
 		Spielfeld.panel.removeAll();
 		winlabel.setIcon(new ImageIcon("images/Gleichstand.png"));
-		winpanel.add(Funktion.winlabel);
-		Spielfeld.frame.add(Funktion.winpanel);
+		winpanel.add(winlabel);
+		Spielfeld.frame.add(winpanel);
 		Spielfeld.frame.revalidate();
 	}
 }

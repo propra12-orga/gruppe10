@@ -3,16 +3,24 @@ import javax.swing.ImageIcon;
 import java.util.*;
 
 public class Move2 {
-	Timer timer = new Timer();
+	public static KeyEvent e;
+	public static int key;
+	static Timer timer = new Timer();
 
 	private static boolean up = true;
 	private static boolean left = false, right = false, down = false;
 	private static boolean win = false;
 
 	public void keyboard(KeyEvent e) {
-		int key = e.getKeyCode();
+		
+		if(Spielfeld.netz == false) {
+			key = e.getKeyCode();
+		}
+		if (Spielfeld.netz){
+			key = Spielfeld.anweisung;
+		}
 
-		if((key == KeyEvent.VK_A) && (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() - 1].laufen)) {
+		if((key == 65) && (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() - 1].laufen)) {
 			if(left) {
 				Blockeigenschaft.rasen(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
 				Spielfeld.setSpalte2(Spielfeld.getSpalte2() - 1);
@@ -39,7 +47,7 @@ public class Move2 {
 			}
 		}
 
-		else if((key == KeyEvent.VK_D) && (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() + 1].laufen)) {
+		else if((key == 68) && (Spielfeld.feld[Spielfeld.getZeile2()][Spielfeld.getSpalte2() + 1].laufen)) {
 			if(right) {
 				Blockeigenschaft.rasen(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
 				Spielfeld.setSpalte2(Spielfeld.getSpalte2() + 1);
@@ -66,7 +74,7 @@ public class Move2 {
 			}
 		}
 
-		else if((key == KeyEvent.VK_W) && (Spielfeld.feld[Spielfeld.getZeile2() - 1][Spielfeld.getSpalte2()].laufen)) {
+		else if((key == 87) && (Spielfeld.feld[Spielfeld.getZeile2() - 1][Spielfeld.getSpalte2()].laufen)) {
 			if(up) {
 				Blockeigenschaft.rasen(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
 				Spielfeld.setZeile2(Spielfeld.getZeile2() - 1);
@@ -93,7 +101,7 @@ public class Move2 {
 			}
 		}
 
-		else if((key == KeyEvent.VK_S) && (Spielfeld.feld[Spielfeld.getZeile2() + 1][Spielfeld.getSpalte2()].laufen)) {
+		else if((key == 83) && (Spielfeld.feld[Spielfeld.getZeile2() + 1][Spielfeld.getSpalte2()].laufen)) {
 			if(down) {
 				Blockeigenschaft.rasen(Spielfeld.getZeile2(), Spielfeld.getSpalte2());
 				Spielfeld.setZeile2(Spielfeld.getZeile2() + 1);

@@ -21,6 +21,10 @@ public class Menu implements ActionListener {
 		start3.add(startl3);
 		start3.setSize(50, 30);
 		start3.addActionListener(this);
+		
+		start4.add(startl4);
+		start4.setSize(50, 30);
+		start4.addActionListener(this);
 
 		exit.add(exitl);
 		exit.setSize(50, 30);
@@ -32,6 +36,7 @@ public class Menu implements ActionListener {
 		panel.add(start1);
 		panel.add(start2);
 		panel.add(start3);
+		panel.add(start4);
 		panel.add(exit);
 
 		frame.setSize(550, 550);
@@ -44,14 +49,16 @@ public class Menu implements ActionListener {
 	JButton start1 = new JButton();
 	JButton start2 = new JButton();
 	JButton start3 = new JButton();
+	JButton start4 = new JButton();
 	JButton exit = new JButton();
 
 	JFrame frame = new JFrame("BOMBERWOMAN | Menu");
 
-	JLabel label = new JLabel("Bomberwoman Version 0.62b");
+	JLabel label = new JLabel("Bomberwoman Version 0.62");
 	JLabel startl1 = new JLabel("1 Spieler");
 	JLabel startl2 = new JLabel("2 Spieler");
 	JLabel startl3 = new JLabel("2 Spieler Free Run");
+	JLabel startl4 = new JLabel("Netzwerk Free Run");
 	JLabel optionsl = new JLabel("Options");
 	JLabel exitl = new JLabel("Exit");
 
@@ -68,6 +75,11 @@ public class Menu implements ActionListener {
         	spielfeld.neuesSpielfeld(2, "level1.txt");
 		}
 		if(e.getSource() == start3) {
+			Spielfeld spielfeld = new Spielfeld();
+        	spielfeld.neuesSpielfeld(2, "freerun.txt");
+		}
+		if(e.getSource() == start4) {
+			Spielfeld.netz = true;
 			Spielfeld spielfeld = new Spielfeld();
         	spielfeld.neuesSpielfeld(2, "freerun.txt");
 		}

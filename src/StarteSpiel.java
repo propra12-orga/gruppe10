@@ -1,7 +1,7 @@
 /**
  * Bomberwoman by Bomberwoman Industries
  * @author Bella, Nils, Andi, Chris
- * @version 0.60
+ * @version 0.62
  */
 
 public class StarteSpiel {
